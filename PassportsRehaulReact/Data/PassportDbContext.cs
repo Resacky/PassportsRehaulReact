@@ -10,12 +10,12 @@ namespace PassportsRehaulReact.Data
 
         public PassportDbContext(IConfiguration config)
         {
-
+            _config = config;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer();
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("DatabaseConnection"));
         }
 
     }
