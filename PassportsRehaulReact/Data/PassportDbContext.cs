@@ -18,6 +18,6 @@ namespace PassportsRehaulReact.Data
             optionsBuilder.UseSqlServer(_config.GetConnectionString("DatabaseConnection"));
         }
 
+        public DbSet<Employees> employees { get; set; }
     }
-
 }
