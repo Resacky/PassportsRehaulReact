@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace PassportsRehaulReact.Data
+namespace PassportsRehaulReact.Models
 {
     [Keyless]
     public class Employees

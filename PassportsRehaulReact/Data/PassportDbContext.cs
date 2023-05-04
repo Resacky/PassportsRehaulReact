@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PassportsRehaulReact.Models;
 
 namespace PassportsRehaulReact.Data
 {
@@ -19,5 +20,10 @@ namespace PassportsRehaulReact.Data
         }
 
         public DbSet<Employees> employees { get; set; }
+        public DbSet<PassPortARSCG> PassPortARSCGs { get; set; }
+        public DbSet<PassPortARSSD> PassPortARSSDs { get; set; }
+        public DbSet<PassPortFees> PassPortFeess { get; set; }
+        public DbSet<PassPortLockBoxes> PassPortLockBoxess { get; set; }
+
     }
 }

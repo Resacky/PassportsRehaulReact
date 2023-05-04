@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PassportsRehaulReact.Data;
 
@@ -10,9 +11,10 @@ using PassportsRehaulReact.Data;
 namespace PassportsRehaulReact.Migrations
 {
     [DbContext(typeof(PassportDbContext))]
-    partial class PassportDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230504201936_Add_PassPortLockBoxes_Table")]
+    partial class Add_PassPortLockBoxes_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

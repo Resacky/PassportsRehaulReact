@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PassportsRehaulReact.Data;
 
@@ -10,9 +11,10 @@ using PassportsRehaulReact.Data;
 namespace PassportsRehaulReact.Migrations
 {
     [DbContext(typeof(PassportDbContext))]
-    partial class PassportDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230504201622_Add_PassPortFees_Table")]
+    partial class Add_PassPortFees_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,23 +121,6 @@ namespace PassportsRehaulReact.Migrations
                     b.HasKey("PPFEEID");
 
                     b.ToTable("PassPortFeess");
-                });
-
-            modelBuilder.Entity("PassportsRehaulReact.Models.PassPortLockBoxes", b =>
-                {
-                    b.Property<int>("LOCKBOXID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LOCKBOXID"), 1L, 1);
-
-                    b.Property<string>("LBoxDescription")
-                        .IsRequired()
-                        .HasColumnType("char(50)");
-
-                    b.HasKey("LOCKBOXID");
-
-                    b.ToTable("PassPortLockBoxess");
                 });
 #pragma warning restore 612, 618
         }
