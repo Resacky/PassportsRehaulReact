@@ -27,5 +27,7 @@ namespace PassportsRehaulReact.Data
         public DbSet<PassportsRehaulReact.Models.PassPortARSSD>? PassPortARSSD { get; set; }
 
         public DbSet<PassportsRehaulReact.Models.PassPortFees>? PassPortFees { get; set; }
+
+        public DbSet<PassportsRehaulReact.Models.PassPortLockBoxes>? PassPortLockBoxes { get; set; }
     }
 }
