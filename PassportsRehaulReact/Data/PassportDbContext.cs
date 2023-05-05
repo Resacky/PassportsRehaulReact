@@ -19,6 +19,12 @@ namespace PassportsRehaulReact.Data
             optionsBuilder.UseSqlServer(_config.GetConnectionString("DatabaseConnection"));
         }
 
+        /* to create an arbitary primary key */
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employees>().HasKey(x => x.idnum);
+        }
+
         public DbSet<Employees> employees { get; set; }
         public DbSet<PassPortARSCG> PassPortARSCGs { get; set; }
         public DbSet<PassPortARSSD> PassPortARSSDs { get; set; }
