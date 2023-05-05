@@ -16,6 +16,5 @@ namespace PassportsRehaulReact.Models
         public string radio { get; set; }
 
         public int idnum { get; set; }
-
     }
 }

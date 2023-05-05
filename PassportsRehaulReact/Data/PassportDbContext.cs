@@ -21,5 +21,7 @@ namespace PassportsRehaulReact.Data
         }
 
         public DbSet<Employees> employees { get; set; }
+
+        public DbSet<PassportsRehaulReact.Models.PassPortARSCG>? PassPortARSCG { get; set; }
     }
 }
