@@ -23,6 +23,12 @@ namespace PassportsRehaulReact.Migrations
 
             modelBuilder.Entity("PassportsRehaulReact.Models.Employees", b =>
                 {
+                    b.Property<int>("idnum")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idnum"), 1L, 1);
+
                     b.Property<string>("cityCell")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -35,9 +41,6 @@ namespace PassportsRehaulReact.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idnum")
-                        .HasColumnType("int");
-
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -46,96 +49,9 @@ namespace PassportsRehaulReact.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("idnum");
+
                     b.ToTable("employees");
-                });
-
-            modelBuilder.Entity("PassportsRehaulReact.Models.PassPortARSCG", b =>
-                {
-                    b.Property<int>("PPARSIDCG")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PPARSIDCG"), 1L, 1);
-
-                    b.Property<string>("ARSDescription")
-                        .IsRequired()
-                        .HasColumnType("nchar");
-
-                    b.Property<decimal>("ARSFee")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("sort")
-                        .HasColumnType("int");
-
-                    b.HasKey("PPARSIDCG");
-
-                    b.ToTable("PassPortARSCGs");
-                });
-
-            modelBuilder.Entity("PassportsRehaulReact.Models.PassPortARSSD", b =>
-                {
-                    b.Property<int>("PPARSIDSD")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PPARSIDSD"), 1L, 1);
-
-                    b.Property<string>("ARSDescription")
-                        .IsRequired()
-                        .HasColumnType("nchar");
-
-                    b.Property<decimal>("ARSFee")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("sort")
-                        .HasColumnType("int");
-
-                    b.HasKey("PPARSIDSD");
-
-                    b.ToTable("PassPortARSSDs");
-                });
-
-            modelBuilder.Entity("PassportsRehaulReact.Models.PassPortFees", b =>
-                {
-                    b.Property<int>("PPFEEID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PPFEEID"), 1L, 1);
-
-                    b.Property<decimal>("FeeAmtCG")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("FeeAmtSD")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("FeeDescription")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<int>("sort")
-                        .HasColumnType("int");
-
-                    b.HasKey("PPFEEID");
-
-                    b.ToTable("PassPortFeess");
-                });
-
-            modelBuilder.Entity("PassportsRehaulReact.Models.PassPortLockBoxes", b =>
-                {
-                    b.Property<int>("LOCKBOXID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LOCKBOXID"), 1L, 1);
-
-                    b.Property<string>("LBoxDescription")
-                        .IsRequired()
-                        .HasColumnType("char(50)");
-
-                    b.HasKey("LOCKBOXID");
-
-                    b.ToTable("PassPortLockBoxess");
                 });
 #pragma warning restore 612, 618
         }

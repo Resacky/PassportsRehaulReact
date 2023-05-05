@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace PassportsRehaulReact.Models
 {
-    [Keyless]
     public class Employees
     {
-
         public string name { get; set; }
 
         public string email { get; set; }
