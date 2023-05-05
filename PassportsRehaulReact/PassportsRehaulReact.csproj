@@ -36,8 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\styles\" />
     <Folder Include="ClientApp\src\assets\" />
+    <Folder Include="ClientApp\src\styles\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
