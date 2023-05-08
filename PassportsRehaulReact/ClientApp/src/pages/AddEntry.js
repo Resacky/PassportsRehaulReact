@@ -15,9 +15,16 @@ function AddEntry() {
     const [dateOfBirth, setDateOfBirth] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
+    const [records, setRecords] = useState([]);
+    const [selectedRecord, setSelectedRecord] = useState(null);
+
+    const [passportRecords, setPassportRecords] = useState([]);
+    const [selectedPassportRecords, setSelectedPassportRecords] = useState(null);
+
     const handleSubmit = (event) => {
+        /* debugging purposes */
         event.preventDefault();
-        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}`);
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}`);
     };
 
     return (
@@ -36,9 +43,18 @@ function AddEntry() {
                         phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber}
                     />
 
-                    <LockBoxDropdownMenu />
-                    <TypeOfPassportBox />
+                    <LockBoxDropdownMenu
+                        records={records} setRecords={setRecords}
+                        selectedRecord={selectedRecord} setSelectedRecord={setSelectedRecord}
+                    />
+
+                    <TypeOfPassportBox
+                        passportRecords={passportRecords} setPassportRecords={setPassportRecords}
+                        selectedPassportRecords={selectedPassportRecords} setSelectedPassportRecords={setSelectedPassportRecords}
+                    />
+
                     <StateDepartment />
+
                     <button type="submit">Submit</button>
                 </form>
             </div>

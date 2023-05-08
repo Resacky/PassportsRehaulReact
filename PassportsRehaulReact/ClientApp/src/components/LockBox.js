@@ -1,9 +1,10 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const LockBoxDropdownMenu = () => {
-    const [records, setRecords] = useState([]);
-    const [selectedRecord, setSelectedRecord] = useState(null);
+const LockBoxDropdownMenu = ({
+    records, setRecords,
+    selectedRecord, setSelectedRecord
+}) => {
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,8 +19,8 @@ const LockBoxDropdownMenu = () => {
         fetchData();
     }, []);
 
-    const handleSelectionChange = (event) => {
-        setSelectedRecord(event.target.value);
+    const handleSelectionChange = (e) => {
+        setSelectedRecord(e.target.value);
     };
 
     return (

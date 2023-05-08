@@ -1,15 +1,16 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const TypeOfPassportBox = () => {
-    const [records, setRecords] = useState([]);
-    const [selectedRecord, setSelectedRecord] = useState(null);
+const TypeOfPassportBox = ({
+    passportRecords, setPassportRecords,
+    selectedPassportRecords, setSelectedPassportRecords
+}) => {
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('here replace the new table');
-                setRecords(response.data);
+                setPassportRecords(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -18,16 +19,16 @@ const TypeOfPassportBox = () => {
         fetchData();
     }, []);
 
-    const handleSelectionChange = (event) => {
-        setSelectedRecord(event.target.value);
+    const handleSelectionChange = (e) => {
+        setSelectedPassportRecords(e.target.value);
     };
 
     return (
         <div>
             <label htmlFor="recordSelect">Select Type of Passport:</label>
-            <select id="recordSelect" value={selectedRecord} onChange={handleSelectionChange}>
+            <select id="recordSelect" value={selectedPassportRecords} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>
-                {records.map((record) => (
+                {passportRecords.map((record) => (
                     <option key={record.lockboxid} value={record.lockboxid}>
                         {record.id/* here place the json value you want represented*/}
                     </option>
