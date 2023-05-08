@@ -22,6 +22,7 @@ function AddEntry() {
     const [passportRecords, setPassportRecords] = useState([]);
     const [selectedPassportRecords, setSelectedPassportRecords] = useState(null);
 
+    /* function for the logic of establishing how old the individual is relative to the 16 year old threshold */
     function isAdult(dateOfBirth) {
         const dob = new Date(dateOfBirth);
         const today = new Date();
