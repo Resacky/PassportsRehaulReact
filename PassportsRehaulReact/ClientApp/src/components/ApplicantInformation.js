@@ -7,6 +7,26 @@ const ApplicantInformation = ({
     dateOfBirth, setDateOfBirth,
     phoneNumber, setPhoneNumber
 }) => {
+
+    const handlePhoneNumberChange = (e) => {
+        const rawValue = e.target.value.replace(/\D+/g, '');
+        let formattedValue = '';
+
+        if (rawValue.length > 0) {
+            formattedValue += '(' + rawValue.substring(0, 3);
+        }
+
+        if (rawValue.length > 3) {
+            formattedValue += ') ' + rawValue.substring(3, 6);
+        }
+
+        if (rawValue.length > 6) {
+            formattedValue += '-' + rawValue.substring(6);
+        }
+
+        setPhoneNumber(formattedValue);
+    };
+
     return (
         <div>
             <label htmlFor="firstName">First Name:</label>
@@ -43,10 +63,11 @@ const ApplicantInformation = ({
             <br />
             <label htmlFor="phoneNumber">Phone Number:</label>
             <input
-                type="tel"
+                type="text"
                 id="phoneNumber"
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={handlePhoneNumberChange}
+                maxLength="14"
             />
         </div>
     );
