@@ -1,8 +1,28 @@
-﻿.StateDepartmentContainer {
-    display: grid;
+﻿.SDframe {
     border: solid 2px;
-    padding: 1vh;
     margin: 1vh;
-    justify-content: center;
+    padding: 1vh;
     width: 20vw;
+    justify-content: center;
+}
+
+.Header{
+    display: flex;
+    justify-content: center;
+}
+
+.StateDepartmentContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+}
+
+.ColumnLabels {
+    display: flex;
+    justify-content: center;
+}
+
+.InfoLabels {
+    display: flex;
+    justify-content: center;
 }
