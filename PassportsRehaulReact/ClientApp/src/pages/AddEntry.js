@@ -4,16 +4,22 @@ import LockBoxDropdownMenu from "../components/LockBox";
 import TypeOfPassportBox from "../components/TypeOfPassportBox";
 import StateDepartment from "../components/StateDepartment";
 
+import "../styles/AddEntryStyles/AddEntryStyle.css";
+
 function AddEntry() {
     return (
         <>
-        // AddEntry Page
-            <OtherPageLinks />
-            <ApplicantInformation />
-            <LockBoxDropdownMenu />
-            <TypeOfPassportBox />
-            <StateDepartment />
-            //potentially add Payment/Travel portion w/ State Department Check Amount and the Date of departure to be a date?
+            <div className="mainContainer">
+                <div>
+                    <OtherPageLinks />
+                </div>
+                <div>
+                    <ApplicantInformation />
+                    <LockBoxDropdownMenu />
+                    <TypeOfPassportBox />
+                    <StateDepartment />
+                </div>
+            </div>
         </>
     );
 }
