@@ -3,4 +3,12 @@
     grid-template-columns: 1fr 1fr;
     gap: 1%;
     justify-content: center;
+    margin-top: 10vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.OtherPageLinksContainer {
+    display: flex;
+    justify-content: center;
 }
