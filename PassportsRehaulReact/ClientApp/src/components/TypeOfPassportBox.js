@@ -1,6 +1,8 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import '../styles/AddEntryStyles/TypeOfPassportBoxStyle.css';
+
 const TypeOfPassportBox = ({
     passportRecords, setPassportRecords,
     selectedPassportRecords, setSelectedPassportRecords
@@ -24,7 +26,7 @@ const TypeOfPassportBox = ({
     };
 
     return (
-        <div>
+        <div className="TypeOfPassportBoxContainer">
             <label htmlFor="recordSelect">Select Type of Passport:</label>
             <select id="recordSelect" value={selectedPassportRecords} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>

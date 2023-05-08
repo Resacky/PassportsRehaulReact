@@ -1,6 +1,8 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import '../styles/AddEntryStyles/LockBoxStyle.css';
+
 const LockBoxDropdownMenu = ({
     records, setRecords,
     selectedRecord, setSelectedRecord
@@ -24,7 +26,7 @@ const LockBoxDropdownMenu = ({
     };
 
     return (
-        <div>
+        <div className="LockBoxContainer">
             <label htmlFor="recordSelect">Lock Box:</label>
             <select id="recordSelect" value={selectedRecord} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>

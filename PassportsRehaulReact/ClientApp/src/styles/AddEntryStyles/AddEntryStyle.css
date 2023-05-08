@@ -12,3 +12,13 @@
     display: flex;
     justify-content: center;
 }
+
+.formContainer {
+    display: grid;
+    justify-content: center;
+    width: auto;
+}
+
+.submitButton {
+
+}

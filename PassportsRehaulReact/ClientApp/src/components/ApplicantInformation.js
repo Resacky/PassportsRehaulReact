@@ -1,5 +1,7 @@
 ﻿import React from 'react';
 
+import '../styles/AddEntryStyles/ApplicantInformationStyle.css';
+
 const ApplicantInformation = ({
     firstName, setFirstName,
     middleName, setMiddleName,
@@ -28,7 +30,7 @@ const ApplicantInformation = ({
     };
 
     return (
-        <div>
+        <div className="ApplicantInformationContainer">
             <label htmlFor="firstName">First Name:</label>
             <input
                 type="text"

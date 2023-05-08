@@ -33,7 +33,7 @@ function AddEntry() {
                 <div className="OtherPageLinksContainer">
                     <OtherPageLinks />
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="formContainer">
 
                     <ApplicantInformation
                         firstName={firstName} setFirstName={setFirstName}
@@ -55,7 +55,7 @@ function AddEntry() {
 
                     <StateDepartment />
 
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="submitButton">Submit</button>
                 </form>
             </div>
         </>

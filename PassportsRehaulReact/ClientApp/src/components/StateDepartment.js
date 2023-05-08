@@ -1,6 +1,8 @@
 ﻿import React, { useState } from 'react';
 import AddedReturnServicesBox from './AddedReturnServicesBox';
 
+import '../styles/AddEntryStyles/StateDepartmentStyle.css';
+
 const StateDepartment = () => {
     const [isConditionTrue, setIsConditionTrue] = useState(false);
 
@@ -9,7 +11,7 @@ const StateDepartment = () => {
     };
 
     return (
-        <div>
+        <div className="StateDepartmentContainer">
             <label>State Department Fees</label>
             <br />
             <label>Passport</label>
