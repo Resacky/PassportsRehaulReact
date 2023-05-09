@@ -52,19 +52,11 @@ const TypeOfPassportBox = ({
             <label htmlFor="recordSelect">Select Type of Passport:</label>
             <select id="recordSelect" value={selectedPassportRecords} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>
-                {passportRecords.map((record) => {
-                    let value;
-                    if (isAdult(dateOfBirth)) {
-                        value = record.adult;
-                    } else {
-                        value = record.minor;
-                    }
-                    return (
-                        <option key={record.feeDescription} value={value}>
-                            {record.feeDescription}
-                        </option>
-                    );
-                })}
+                {passportRecords.map((record) => (
+                    <option key={record.sort} value={record.sort}>
+                        {record.feeDescription}
+                    </option>
+                ))}
             </select>
         </div>
     );
