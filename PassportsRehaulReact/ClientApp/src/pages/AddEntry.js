@@ -1,5 +1,4 @@
 ﻿import React, { useState } from 'react';
-import { differenceInYears } from 'date-fns';
 import OtherPageLinks from "../components/OtherPageLinks";
 import ApplicantInformation from "../components/ApplicantInformation";
 import LockBoxDropdownMenu from "../components/LockBox";
@@ -17,30 +16,20 @@ function AddEntry() {
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const [records, setRecords] = useState([]);
-    const [selectedRecord, setSelectedRecord] = useState(null);
+    const [selectedRecord, setSelectedRecord] = useState();
 
     const [passportRecords, setPassportRecords] = useState([]);
-    const [selectedPassportRecords, setSelectedPassportRecords] = useState(null);
-
-    /* function for the logic of establishing how old the individual is relative to the 16 year old threshold */
-    function isAdult(dateOfBirth) {
-        const dob = new Date(dateOfBirth);
-        const today = new Date();
-
-        /* Calculate the difference between the current date and the date of birth using the date-fns library */
-        const ageInYears = differenceInYears(today, dob);
-
-        /* Check if the person is 16 years or older */
-        return ageInYears >= 16;
-    }
+    const [selectedPassportRecords, setSelectedPassportRecords] = useState();
 
     const handleSubmit = (event) => {
-        /* debugging purposes */
         event.preventDefault();
-        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}`);
-        /* this is the terinary expression for the determination if the user is an adult or not */
-        const adultStatus = isAdult(dateOfBirth) ? 'Adult' : 'Not an adult';
-        console.log(adultStatus);
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}\nType of Passport: ${selectedPassportRecords}`);
+
+        setFirstName('');
+        setMiddleName('');
+        setLastName('');
+        setDateOfBirth('');
+        setPhoneNumber('');
     };
 
     return (
@@ -67,6 +56,7 @@ function AddEntry() {
                     <TypeOfPassportBox
                         passportRecords={passportRecords} setPassportRecords={setPassportRecords}
                         selectedPassportRecords={selectedPassportRecords} setSelectedPassportRecords={setSelectedPassportRecords}
+                        dateOfBirth={dateOfBirth}
                     />
 
                     <StateDepartment />

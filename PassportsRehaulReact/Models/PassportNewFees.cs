@@ -5,20 +5,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PassportsRehaulReact.Models
 {
-    public class PassportFeesNew
+    public class PassportNewFees
     {
         public int? PPFEEID { get; set; }
 
         [Key]
-        public int Sort { get; set; }
+        public int? Sort { get; set; }
 
-        [Column(TypeName = "nvarchar")]
+        [Column(TypeName = "varchar")]
         public string FeeDescription { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Minor { get; set; }
+        public decimal? minor { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Adult { get; set; }
+        public decimal? adult { get; set; }
+
     }
 }

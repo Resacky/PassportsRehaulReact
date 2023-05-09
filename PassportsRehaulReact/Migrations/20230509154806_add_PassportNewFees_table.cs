@@ -4,7 +4,7 @@
 
 namespace PassportsRehaulReact.Migrations
 {
-    public partial class ADD_PassportFeesNew_TABLE : Migration
+    public partial class add_PassportNewFees_table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

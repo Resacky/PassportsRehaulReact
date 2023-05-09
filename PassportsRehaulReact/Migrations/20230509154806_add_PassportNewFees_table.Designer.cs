@@ -12,8 +12,8 @@ using PassportsRehaulReact.Data;
 namespace PassportsRehaulReact.Migrations
 {
     [DbContext(typeof(PassportDbContext))]
-    [Migration("20230509132759_ADD_PassportFeesNew_TABLE")]
-    partial class ADD_PassportFeesNew_TABLE
+    [Migration("20230509154806_add_PassportNewFees_table")]
+    partial class add_PassportNewFees_table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
