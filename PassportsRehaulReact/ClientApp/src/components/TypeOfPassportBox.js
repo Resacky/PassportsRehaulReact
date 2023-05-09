@@ -31,8 +31,8 @@ const TypeOfPassportBox = ({
             <select id="recordSelect" value={selectedPassportRecords} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>
                 {passportRecords.map((record) => (
-                    <option key={record.lockboxid} value={record.lockboxid}>
-                        {record.id/* here place the json value you want represented*/}
+                    <option key={record.Sort/* this would need to be a boolean */} value={record.Sort/* this would need to be a boolean */}>
+                        {record.FeeDescription}
                     </option>
                 ))}
             </select>

@@ -16,11 +16,22 @@ const StateDepartment = () => {
                 <label>State Department Fees</label>
             </div>
             <div className="StateDepartmentContainer">
-                <div className="ColumnLabels">
-                    <label>a</label>
+                <div className="Passport">
+                    <label>Passport</label>
+                    <div>
+                        <label>$0.00</label>
+                    </div>
                 </div>
-                <div className="InfoLabels">
-                    <label>a</label>
+                <div className="AddedReturnServices">
+                    <label>Added Return Services</label>
+                    <div>
+                        <select>
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
+                        <label>$0.00</label>
+                    </div>
                 </div>
             </div>
         </div>
