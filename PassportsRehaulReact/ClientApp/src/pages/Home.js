@@ -6,7 +6,7 @@ function Home() {
     return (
         <>
             <div className="HomeContainer">
-                <OtherPageLinks Links="HomeLinks" ul="HomeUl" li="HomeLi"/>
+                <OtherPageLinks Links="HomeLinks" ul="HomeUl" li="HomeLi" LinkStyle="primary"/>
             </div>
         </>
     );
