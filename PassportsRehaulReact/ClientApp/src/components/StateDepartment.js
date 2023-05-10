@@ -6,7 +6,8 @@ import '../styles/AddEntryStyles/StateDepartmentStyle.css';
 const StateDepartment = ({
     passportARSSD, setPassportARSSD,
     selectedPassportARSSD, setSelectedPassportARSSD,
-    passportPrice
+    passportPrice,
+    totalPrice, setTotalPrice
 }) => {
 
     /* This is used to communicate with the controller ASP.NET Core API to retrieve back the JSON of the SQL DB in question, any changes should reflect ASAP */
@@ -23,12 +24,15 @@ const StateDepartment = ({
         fetchData();
     }, []);
 
+    useEffect(() => {
+        // Assuming both values are numbers or can be parsed into numbers
+        const total = parseFloat(selectedPassportARSSD || '0') + parseFloat(passportPrice || '0');
+        setTotalPrice(total);
+    }, [selectedPassportARSSD, passportPrice]);
+
     const handleSelectionChange = (e) => {
         setSelectedPassportARSSD(e.target.value);
     };
-
-    /* weird way of using a ternerary expression to prevent a 'NaN' output and default it to 0.00 instead when empty */
-    const total = parseFloat(selectedPassportARSSD || '0') + parseFloat(passportPrice || '0') ? parseFloat(selectedPassportARSSD || '0') + parseFloat(passportPrice || '0') : 0.00;
 
     /* Define default values for labels */
     const displayPassportPrice = passportPrice ? passportPrice : '0.00';
@@ -60,7 +64,7 @@ const StateDepartment = ({
                         <label>${displaySelectedPassportARSSD}</label>
                     </div>
                 </div>
-                <label>Total: ${total.toFixed(2)}</label>
+                <label>Total: ${totalPrice}</label>
             </div>
         </div>
     );

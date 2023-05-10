@@ -24,10 +24,11 @@ function AddEntry() {
 
     const [passportARSSD, setPassportARSSD] = useState([]);
     const [selectedPassportARSSD, setSelectedPassportARSSD] = useState();
+    const [totalPrice, setTotalPrice] = useState();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}`);
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
 
         setFirstName('');
         setMiddleName('');
@@ -35,7 +36,6 @@ function AddEntry() {
         setDateOfBirth('');
         setPhoneNumber('');
         /* find a way to clear the dropboxes to the defaults after clicking submit */
-        setPassportPrice(0);
     };
 
     return (
@@ -70,6 +70,7 @@ function AddEntry() {
                         passportARSSD={passportARSSD} setPassportARSSD={setPassportARSSD}
                         selectedPassportARSSD={selectedPassportARSSD} setSelectedPassportARSSD={setSelectedPassportARSSD}
                         passportPrice={passportPrice}
+                        totalPrice={totalPrice} setTotalPrice={setTotalPrice}
                     />
 
                     <button type="submit" className="submitButton">Submit</button>
