@@ -10,6 +10,7 @@ const TypeOfPassportBox = ({
     dateOfBirth
 }) => {
 
+    /* This is used to communicate with the controller ASP.NET Core API to retrieve back the JSON of the SQL DB in question, any changes should reflect ASAP */
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -30,7 +31,7 @@ const TypeOfPassportBox = ({
 
     /* function for the logic of establishing how old the individual is relative to the 16 year old threshold */
     function isAdult(dateOfBirth) {
-        /* this is to check if the user placed in a dob to begin with, if not give them the adult price by default */
+        /* this is to check if the user placed in a DOB to begin with, if not give them the adult price by default */
         if (!dateOfBirth) {
             return true;
         }
@@ -40,11 +41,12 @@ const TypeOfPassportBox = ({
         /* Calculate the difference between the current date and the date of birth using the date-fns library */
         const ageInYears = differenceInYears(today, dob);
 
-        /* Check if the person is 16 years or older */
+        /* Check if the person is 16 years or older, if so, categorize them as an 'adult' */
         if (ageInYears >= 16) {
             return true;
         }
 
+        /* else default them as a 'minor' */
         return false;
     }
 
@@ -63,8 +65,10 @@ const TypeOfPassportBox = ({
         if (record) { // Check if record is defined
             const value = isAdult(dateOfBirth) ? record.adult : record.minor;
             console.log('Calculated value:', value); // Debug line
+            /* have this set the variable of the price that is paid */
         } else {
             console.log(`No record found with sort value: ${sort}`);
+            /* have this set the variable $0.00 for debugging purposes */
         }
     };
 
