@@ -17,6 +17,7 @@
     display: grid;
     justify-content: center;
     width: auto;
+    margin-bottom: 10vh;
 }
 
 .submitButton {

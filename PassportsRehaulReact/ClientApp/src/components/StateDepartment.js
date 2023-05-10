@@ -42,7 +42,7 @@ const StateDepartment = ({
                 <div className="AddedReturnServices">
                     <label>Added Return Services</label>
                     <div>
-                        <select id="recordSelect" value={setSelectedPassportARSSD} onChange={handleSelectionChange}>
+                        <select id="recordSelect" value={selectedPassportARSSD} onChange={handleSelectionChange}>
                             <option value="">-- Please choose an option --</option>
                             {passportARSSD.map((record) => (
                                 <option key={record.arsDescription} value={record.arsFee}>
@@ -50,7 +50,7 @@ const StateDepartment = ({
                                 </option>
                             ))}
                         </select>
-                        <label>${setSelectedPassportARSSD}</label>
+                        <label>${selectedPassportARSSD}</label>
                     </div>
                 </div>
             </div>
