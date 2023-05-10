@@ -1,0 +1,37 @@
+﻿.header {
+    background-color: rgba(0, 112, 115, 0.8);
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    padding: 2%;
+    margin: -10px -8px 0px -10px;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cityLogo {
+    height: auto;
+    max-width: 100%;
+    width: 250px;
+}
+
+.Clerktext {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    color: #fff;
+    text-decoration: none;
+}
+
+    .Clerktext:hover {
+        text-decoration: underline;
+    }
+
+    .Clerktext a {
+        text-decoration: none;
+    }

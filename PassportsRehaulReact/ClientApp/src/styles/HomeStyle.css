@@ -1,5 +1,5 @@
 ﻿.HomeContainer {
-    display: flex;
+    display: grid;
     justify-content: center;
     background-color: #fcf6f3;
     background-repeat: no-repeat;
@@ -7,4 +7,8 @@
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+}
+
+.Title {
+    font-weight: bold;
 }

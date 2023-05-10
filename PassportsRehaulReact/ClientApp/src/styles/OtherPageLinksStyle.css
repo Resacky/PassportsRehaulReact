@@ -2,7 +2,7 @@
 .HomeLinks {
     display: flex;
     justify-content: center;
-    padding-top: 45vh;
+    padding-top: 30vh;
 }
 
 .HomeUl {
@@ -16,6 +16,7 @@
     margin: 1vw;
 }
 
+    /* these are supposed to the the links themselves, named them primary out of another CSS webapp */
 .primary {
     border: 2px solid;
     background-color: #c05818;
