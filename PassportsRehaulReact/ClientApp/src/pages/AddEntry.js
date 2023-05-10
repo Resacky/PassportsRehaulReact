@@ -23,7 +23,7 @@ function AddEntry() {
     let [passportPrice, setPassportPrice] = useState();
 
     const [passportARSSD, setPassportARSSD] = useState([]);
-    const [selectedPassportARSSD, setSelectedPassportARSSD] = useState([]);
+    const [selectedPassportARSSD, setSelectedPassportARSSD] = useState();
 
     const handleSubmit = (event) => {
         event.preventDefault();
