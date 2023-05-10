@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 
 /* list of pages */
 import Home from './pages/Home';
@@ -16,6 +16,7 @@ const root = createRoot(rootElement);
 root.render(
     <>
         <Router>
+            <Navigate from="/" to="/Home" />
             <Routes>
                 <Route path="/Home" element={<Home />} />
                 <Route path="/AddEntry" element={<AddEntry />} />
