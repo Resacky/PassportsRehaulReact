@@ -1,10 +1,13 @@
 ﻿import OtherPageLinks from "../components/OtherPageLinks";
 
+import '../styles/HomeStyle.css';
+
 function Home() {
     return (
         <>
-        //Home
-            <OtherPageLinks />
+            <div className="HomeContainer">
+                <OtherPageLinks Links="HomeLinks" ul="HomeUl" li="HomeLi"/>
+            </div>
         </>
     );
 }

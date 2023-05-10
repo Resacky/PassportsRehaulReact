@@ -1,13 +1,18 @@
-﻿import { Link } from "react-router-dom";
+﻿import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
-function OtherPageLinks() {
+import '../styles/OtherPageLinksStyle.css';
+
+/* try to find a way to customize the react.js component to have different styles based on what page its used on */
+function OtherPageLinks({ Links, ul, li }) {
+
     return (
-        <div>
-            <ul>
-                <li><Link to="/Home" className="Links">Pass Port Home</Link></li>
-                <li><Link to="/AddEntry" className="Links">Add Entry</Link></li>
-                <li><Link to="/SearchAndEditEntry" className="Links">Search and Edit Entry</Link></li>
-                <li><Link to="/SelectReporting" className="Links">Select a Report</Link></li>
+        <div className={Links}>
+            <ul className={ul}>
+                <li className={li}><Link to="/Home" >Pass Port Home</Link></li>
+                <li className={li}><Link to="/AddEntry" >Add Entry</Link></li>
+                <li className={li}><Link to="/SearchAndEditEntry" >Search and Edit Entry</Link></li>
+                <li className={li}><Link to="/SelectReporting" >Select a Report</Link></li>
             </ul>
         </div>
     );

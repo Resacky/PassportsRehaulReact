@@ -1,0 +1,17 @@
+﻿.HomeLinks {
+    display: flex;
+}
+
+.HomeUl {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.HomeLi {
+    margin: 1%;
+}
+
+.AddEntryLinks {
+}

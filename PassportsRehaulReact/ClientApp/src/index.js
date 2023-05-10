@@ -16,8 +16,8 @@ const root = createRoot(rootElement);
 root.render(
     <>
         <Router>
-            <Navigate from="/" to="/Home" />
             <Routes>
+                <Route path="/" element={<Navigate from="/" to="/Home" />} />
                 <Route path="/Home" element={<Home />} />
                 <Route path="/AddEntry" element={<AddEntry />} />
                 <Route path="/SearchAndEditEntry" element={<SearchAndEditEntry />} />
