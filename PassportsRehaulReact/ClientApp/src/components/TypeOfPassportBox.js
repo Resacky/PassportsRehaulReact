@@ -25,6 +25,7 @@ const TypeOfPassportBox = ({
 
     const handleSelectionChange = (e) => {
         setSelectedPassportRecords(e.target.value);
+        findCorrespondingValue(e.target.value);
     };
 
     /* function for the logic of establishing how old the individual is relative to the 16 year old threshold */
@@ -47,13 +48,33 @@ const TypeOfPassportBox = ({
         return false;
     }
 
+    /* there is a bug with the way the options dropdown menu works with records having the same price, weather minor or adult, so I am doing another cross reference using the records.sort as the key
+    and deriving the price within the backend programming instead of deriving it through the select div */
+    const findCorrespondingValue = (sort) => {
+        console.log('Sort value:', sort); // Debug line
+
+        const record = passportRecords.find(record => {
+            console.log('Current record:', record); // Debug line
+            return record.sort == sort;
+        });
+
+        console.log('Found record:', record); // Debug line
+
+        if (record) { // Check if record is defined
+            const value = isAdult(dateOfBirth) ? record.adult : record.minor;
+            console.log('Calculated value:', value); // Debug line
+        } else {
+            console.log(`No record found with sort value: ${sort}`);
+        }
+    };
+
     return (
         <div className="TypeOfPassportBoxContainer">
             <label htmlFor="recordSelect">Select Type of Passport:</label>
             <select id="recordSelect" value={selectedPassportRecords} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>
                 {passportRecords.map((record) => (
-                    <option key={record.sort} value={record.sort}>
+                    <option key={record.feeDescription} value={record.sort}>
                         {record.feeDescription}
                     </option>
                 ))}
