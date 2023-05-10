@@ -1,6 +1,8 @@
 ﻿/* these are the stylings for when the component is being used within "/Home" */
 .HomeLinks {
     display: flex;
+    justify-content: center;
+    padding-top: 45vh;
 }
 
 .HomeUl {
