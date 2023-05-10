@@ -20,7 +20,7 @@
     width: 250px;
 }
 
-.Clerktext {
+.PassportText {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 17px;
@@ -28,10 +28,10 @@
     text-decoration: none;
 }
 
-    .Clerktext:hover {
+    .PassportText:hover {
         text-decoration: underline;
     }
 
-    .Clerktext a {
+    .PassportText a {
         text-decoration: none;
     }
