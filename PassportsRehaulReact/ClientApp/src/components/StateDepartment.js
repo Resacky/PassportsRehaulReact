@@ -1,13 +1,30 @@
-﻿import React, { useState } from 'react';
-import AddedReturnServicesBox from './AddedReturnServicesBox';
+﻿import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import '../styles/AddEntryStyles/StateDepartmentStyle.css';
 
-const StateDepartment = () => {
-    const [isConditionTrue, setIsConditionTrue] = useState(false);
+const StateDepartment = ({
+    passportARSSD, setPassportARSSD,
+    selectedPassportARSSD, setSelectedPassportARSSD,
+    passportPrice
+}) => {
 
-    const handleButtonClick = () => {
-        setIsConditionTrue(!isConditionTrue);
+    /* This is used to communicate with the controller ASP.NET Core API to retrieve back the JSON of the SQL DB in question, any changes should reflect ASAP */
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('https://localhost:7243/api/PassPortARSSDs');
+                setPassportARSSD(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const handleSelectionChange = (e) => {
+        setSelectedPassportARSSD(e.target.value);
     };
 
     return (
@@ -19,18 +36,21 @@ const StateDepartment = () => {
                 <div className="Passport">
                     <label>Passport</label>
                     <div>
-                        <label>$0.00</label>
+                        <label>${passportPrice}</label>
                     </div>
                 </div>
                 <div className="AddedReturnServices">
                     <label>Added Return Services</label>
                     <div>
-                        <select>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
+                        <select id="recordSelect" value={setSelectedPassportARSSD} onChange={handleSelectionChange}>
+                            <option value="">-- Please choose an option --</option>
+                            {passportARSSD.map((record) => (
+                                <option key={record.arsDescription} value={record.arsFee}>
+                                    {record.arsDescription}
+                                </option>
+                            ))}
                         </select>
-                        <label>$0.00</label>
+                        <label>${setSelectedPassportARSSD}</label>
                     </div>
                 </div>
             </div>
