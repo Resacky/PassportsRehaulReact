@@ -4,10 +4,11 @@ import axios from 'axios';
 
 import '../styles/AddEntryStyles/TypeOfPassportBoxStyle.css';
 
-const TypeOfPassportBox = ({
+let TypeOfPassportBox = ({
     passportRecords, setPassportRecords,
     selectedPassportRecords, setSelectedPassportRecords,
-    dateOfBirth
+    dateOfBirth,
+    passportPrice, setPassportPrice
 }) => {
 
     /* This is used to communicate with the controller ASP.NET Core API to retrieve back the JSON of the SQL DB in question, any changes should reflect ASAP */
@@ -23,6 +24,12 @@ const TypeOfPassportBox = ({
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (selectedPassportRecords) {  // If a record is already selected
+            findCorrespondingValue(selectedPassportRecords);  // Recalculate the price
+        }
+    }, [dateOfBirth]);  // Run this effect whenever dateOfBirth changes
 
     const handleSelectionChange = (e) => {
         setSelectedPassportRecords(e.target.value);
@@ -64,11 +71,13 @@ const TypeOfPassportBox = ({
 
         if (record) { // Check if record is defined
             const value = isAdult(dateOfBirth) ? record.adult : record.minor;
-            console.log('Calculated value:', value); // Debug line
             /* have this set the variable of the price that is paid */
+            setPassportPrice(value);
+            console.log('Calculated value:', value); // Debug line
         } else {
-            console.log(`No record found with sort value: ${sort}`);
             /* have this set the variable $0.00 for debugging purposes */
+            setPassportPrice(0);
+            console.log(`No record found with sort value: ${sort}`);
         }
     };
 

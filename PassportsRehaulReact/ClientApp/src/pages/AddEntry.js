@@ -12,7 +12,7 @@ function AddEntry() {
     const [firstName, setFirstName] = useState('');
     const [middleName, setMiddleName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
+    let [dateOfBirth, setDateOfBirth] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const [records, setRecords] = useState([]);
@@ -20,16 +20,18 @@ function AddEntry() {
 
     const [passportRecords, setPassportRecords] = useState([]);
     const [selectedPassportRecords, setSelectedPassportRecords] = useState();
+    let [passportPrice, setPassportPrice] = useState();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}\nType of Passport: ${selectedPassportRecords}`);
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}`);
 
         setFirstName('');
         setMiddleName('');
         setLastName('');
         setDateOfBirth('');
         setPhoneNumber('');
+        setPassportPrice(0);
     };
 
     return (
@@ -57,6 +59,7 @@ function AddEntry() {
                         passportRecords={passportRecords} setPassportRecords={setPassportRecords}
                         selectedPassportRecords={selectedPassportRecords} setSelectedPassportRecords={setSelectedPassportRecords}
                         dateOfBirth={dateOfBirth}
+                        passportPrice={passportPrice} setPassportPrice={setPassportPrice}
                     />
 
                     <StateDepartment />
