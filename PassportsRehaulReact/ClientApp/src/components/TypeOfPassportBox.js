@@ -60,20 +60,20 @@ let TypeOfPassportBox = ({
     /* there is a bug with the way the options dropdown menu works with records having the same price, weather minor or adult, so I am doing another cross reference using the records.sort as the key
     and deriving the price within the backend programming instead of deriving it through the select div */
     const findCorrespondingValue = (sort) => {
-        console.log('Sort value:', sort); // Debug line
+        //console.log('Sort value:', sort); // Debug line
 
         const record = passportRecords.find(record => {
-            console.log('Current record:', record); // Debug line
+            //console.log('Current record:', record); // Debug line
             return record.sort == sort;
         });
 
-        console.log('Found record:', record); // Debug line
+        //console.log('Found record:', record); // Debug line
 
         if (record) { // Check if record is defined
             const value = isAdult(dateOfBirth) ? record.adult : record.minor;
             /* have this set the variable of the price that is paid */
             setPassportPrice(value);
-            console.log('Calculated value:', value); // Debug line
+            //console.log('Calculated value:', value); // Debug line
         } else {
             /* have this set the variable $0.00 for debugging purposes */
             setPassportPrice(0);
