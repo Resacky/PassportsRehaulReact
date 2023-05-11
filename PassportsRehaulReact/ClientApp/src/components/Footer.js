@@ -42,6 +42,18 @@ function Footer() {
                         </label>
                     </div>
                 </div>
+                <div className="connectWithUs">
+                    <h3 className="connectWithUsHeader">Connect with us</h3>
+                    <ul className="connectWithUsMenu">
+                        <li className="menuItem"><a href="https://www.linkedin.com/company/cityofcoralgables">Linked in</a></li>
+                        <li className="menuItem"><a href="https://www.instagram.com/cityofcoralgables/?hl=en">Instagram</a></li>
+                        <li className="menuItem"><a href="https://twitter.com/CityCoralGables">Twitter</a></li>
+                        <li className="menuItem"><a href="https://www.facebook.com/cityofcoralgables">Facebook</a></li>
+                        <li className="menuItem"><a href="https://www.youtube.com/coralgablestv">Youtube</a></li>
+                        <li className="menuItem"><a href="https://nextdoor.com/city/coral-gables--fl/">Nextdoor</a></li>
+                        <li className="menuItem"><a href="https://www.coralgables.com/department/communications-and-public-affairs/services/coral-gables-television">Coral Gables TV</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     );
