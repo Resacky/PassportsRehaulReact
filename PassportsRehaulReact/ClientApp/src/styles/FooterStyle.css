@@ -1,14 +1,69 @@
 ﻿.footerContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #413E3A;
     height: 55vh;
 }
 
-.row {
-
+.rowContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .footerLogo {
-    height: 50%;
-    width: 50%;
+    display: block;
+    height: 13vh;
+    max-width: 15vw;
+}
+
+.contactUs {
+    display: grid;
+    width: 13vw;
+    margin: 5vw;
+}
+
+.contactUsHeader, .location, .telephone, .fax, .impairmentInfo {
+    color: #ffffff;
+}
+
+.locationDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 1vh;
+}
+
+.droppin {
+    height: 2vh;
+    margin-right: 1vw;
+}
+
+.telephoneDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 1vh;
+}
+
+.teleIcon {
+    height: 2vh;
+    margin-right: 1vw;
+}
+
+.faxDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 1vh;
+}
+
+.faxIcon {
+    height: 2vh;
+    margin-right: 1vw;
 }
