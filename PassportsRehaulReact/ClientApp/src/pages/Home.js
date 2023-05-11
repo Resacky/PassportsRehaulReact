@@ -5,12 +5,15 @@ import '../styles/HomeStyle.css';
 
 function Home() {
     return (
-        <>
-            <Banner />
+        <div className="main">
+            <Banner
+                header="homeHeader" headerContent="homeHeaderContent"
+                cityLogo="homeCityLogo" PassportText="homePassportText"
+            />
             <div className="HomeContainer">
                 <OtherPageLinks Links="HomeLinks" ul="HomeUl" li="HomeLi" LinkStyle="primary" />
             </div>
-        </>
+        </div>
     );
 }
 
