@@ -39,4 +39,41 @@
 
 /* this portion of the CSS will be if its any other page so the banner can be dynamically styled */
 .whiteHeader {
+    background-color: #fff;
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    padding: 2%;
+    margin: -10px -8px 0px -10px;
 }
+
+.whiteHeaderContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.whiteCityLogo {
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+    display: block;
+}
+
+.whitePassportText {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    color: #c05818;
+    text-decoration: none;
+}
+
+    .whitePassportText:hover {
+        text-decoration: underline;
+    }
+
+    .whitePassportText a {
+        text-decoration: none;
+    }
+

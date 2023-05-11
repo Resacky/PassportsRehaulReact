@@ -1,0 +1,14 @@
+﻿.footerContainer {
+    display: flex;
+    background-color: #413E3A;
+    height: 55vh;
+}
+
+.row {
+
+}
+
+.footerLogo {
+    height: 50%;
+    width: 50%;
+}

@@ -4,6 +4,8 @@ import ApplicantInformation from "../components/ApplicantInformation";
 import LockBoxDropdownMenu from "../components/LockBox";
 import TypeOfPassportBox from "../components/TypeOfPassportBox";
 import StateDepartment from "../components/StateDepartment";
+import Banner from '../components/Banner';
+import Footer from '../components/Footer';
 
 import "../styles/AddEntryStyles/AddEntryStyle.css";
 
@@ -41,6 +43,13 @@ function AddEntry() {
     return (
         <>
             <div className="mainContainer">
+                <Banner
+                    header="whiteHeader" headerContent="whiteHeaderContent"
+                    cityLogo="whiteCityLogo" PassportText="whitePassportText"
+                />
+                <div class="subHeader">
+                    <label class="subHeaderText">Passport Add Entry</label>
+                </div>
                 <div className="OtherPageLinksContainer">
                     <OtherPageLinks />
                 </div>
@@ -75,6 +84,7 @@ function AddEntry() {
 
                     <button type="submit" className="submitButton">Submit</button>
                 </form>
+                <Footer />
             </div>
         </>
     );

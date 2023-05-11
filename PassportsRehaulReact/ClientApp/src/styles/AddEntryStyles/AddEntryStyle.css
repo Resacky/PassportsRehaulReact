@@ -1,6 +1,19 @@
 ﻿.mainContainer {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+}
+
+.subHeader {
+    background-color: #007073;
+    padding: 4%;
+    margin: -10px -8px 0px -10px;
+}
+
+.subHeaderText {
+    color: #fff;
+    font-family: "Lora",serif;
+    font-size: 3rem;
 }
 
 .OtherPageLinksContainer {
