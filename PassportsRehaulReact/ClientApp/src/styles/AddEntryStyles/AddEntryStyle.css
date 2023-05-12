@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    background-color: #fcf6f3;
 }
 
 .subHeader {
@@ -22,7 +26,7 @@
     justify-content: center;
 }
 
-.overall{
+.overall {
     display: flex;
     justify-content: center;
     margin-top: 7vh;
