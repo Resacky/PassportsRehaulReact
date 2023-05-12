@@ -4,7 +4,6 @@ import LockBoxDropdownMenu from "../components/LockBox";
 import TypeOfPassportBox from "../components/TypeOfPassportBox";
 import StateDepartment from "../components/StateDepartment";
 import Banner from '../components/Banner';
-import Footer from '../components/Footer';
 
 import "../styles/AddEntryStyles/AddEntryStyle.css";
 

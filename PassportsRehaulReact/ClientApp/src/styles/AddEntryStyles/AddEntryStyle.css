@@ -6,14 +6,15 @@
 
 .subHeader {
     background-color: #007073;
-    padding: 2%;
+    padding: 1%;
     margin: -10px -8px 0px -10px;
 }
 
 .subHeaderText {
+    margin-left: 5vw;
     color: #fff;
     font-family: "Lora",serif;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .OtherPageLinksContainer {
@@ -24,6 +25,7 @@
 .overall{
     display: flex;
     justify-content: center;
+    margin-top: 7vh;
 }
 
 .centering {
