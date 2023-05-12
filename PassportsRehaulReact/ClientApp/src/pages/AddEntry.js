@@ -93,7 +93,6 @@ function AddEntry() {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div>
         </>
     );
