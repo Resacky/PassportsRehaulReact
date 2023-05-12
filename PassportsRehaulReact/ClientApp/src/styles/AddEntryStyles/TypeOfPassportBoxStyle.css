@@ -1,6 +1,5 @@
 ﻿.TypeOfPassportBoxContainer {
     display: grid;
-    border: solid 2px;
     padding: 1vh;
     margin: 1vh;
     justify-content: center;
