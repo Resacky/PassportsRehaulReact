@@ -84,9 +84,36 @@
         width: 100%;
     }
 
-/* placeholder */
-.LinkedInIcon, .instagramIcon, .twitterIcon, .facebookIcon, .youtubeIcon, .nextdoorIcon {
+.linkedInIcon {
+    background-image: url('../assets/LinkedInIconWhite.png');
     height: 4vh;
+    width: 4vh;
+}
+
+.instagramIcon {
+    background-image: url('../assets/InstagramIconWhite.png');
+    height: 4vh;
+    width: 4vh;
+}
+
+.twitterIcon {
+    background-image: url('../assets/TwitterIconWhite.png');
+    height: 4vh;
+    width: 3.5vh;
+}
+
+.facebookIcon {
+    background-image: url('../assets/FacebookIconWhite.png');
+    height: 4vh;
+    width: 4.5vh;
+}
+
+.nextdoorIcon {
+    background-image: url('../assets/NextdoorIconWhite.png');
+}
+
+.linkedInIcon, .instagramIcon, .twitterIcon, .facebookIcon, .youtubeIcon, .nextdoorIcon {
+    background-size: cover;
 }
 
 /* adjusting the height for specific icons */
@@ -111,4 +138,10 @@
 
 .coralgablesTV {
     text-decoration: none;
+    color: #ffffff;
 }
+
+    .coralgablesTV:hover {
+        text-decoration: underline;
+        color: #c05818;
+    }
