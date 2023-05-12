@@ -5,6 +5,13 @@ import droppin from '../assets/droppinWhite.png';
 import teleIcon from '../assets/TelephoneIconWhite.png';
 import faxIcon from '../assets/faxIcon.png';
 
+import linkedInIcon from '../assets/LinkedInIconWhite.png';
+import instagramIcon from '../assets/InstagramIconWhite.png';
+import twitterIcon from '../assets/TwitterIconWhite.png';
+import facebookIcon from '../assets/FacebookIconWhite.png';
+import youtubeIcon from '../assets/YoutubeIconWhite.png';
+import nextdoorIcon from '../assets/NextdoorIconWhite.png';
+
 function Footer() {
 
     return (
@@ -45,13 +52,13 @@ function Footer() {
                 <div className="connectWithUs">
                     <h3 className="connectWithUsHeader">Connect with us</h3>
                     <ul className="connectWithUsMenu">
-                        <li className="menuItem"><a href="https://www.linkedin.com/company/cityofcoralgables">Linked in</a></li>
-                        <li className="menuItem"><a href="https://www.instagram.com/cityofcoralgables/?hl=en">Instagram</a></li>
-                        <li className="menuItem"><a href="https://twitter.com/CityCoralGables">Twitter</a></li>
-                        <li className="menuItem"><a href="https://www.facebook.com/cityofcoralgables">Facebook</a></li>
-                        <li className="menuItem"><a href="https://www.youtube.com/coralgablestv">Youtube</a></li>
-                        <li className="menuItem"><a href="https://nextdoor.com/city/coral-gables--fl/">Nextdoor</a></li>
-                        <li className="menuItem"><a href="https://www.coralgables.com/department/communications-and-public-affairs/services/coral-gables-television">Coral Gables TV</a></li>
+                        <li className="menuItem"><a href="https://www.linkedin.com/company/cityofcoralgables"><img src={linkedInIcon} className="LinkedInIcon"></img></a></li>
+                        <li className="menuItem"><a href="https://www.instagram.com/cityofcoralgables/?hl=en"><img src={instagramIcon} className="instagramIcon"></img></a></li>
+                        <li className="menuItem"><a href="https://twitter.com/CityCoralGables"><img src={twitterIcon} className="twitterIcon"></img></a></li>
+                        <li className="menuItem"><a href="https://www.facebook.com/cityofcoralgables"><img src={facebookIcon} className="facebookIcon"></img></a></li>
+                        <li className="menuItem"><a href="https://www.youtube.com/coralgablestv"><img src={youtubeIcon} className="youtubeIcon"></img></a></li>
+                        <li className="menuItem"><a href="https://nextdoor.com/city/coral-gables--fl/"><img src={nextdoorIcon} className="nextdoorIcon"></img></a></li>
+                        <li className="menuItem"><a href="https://www.coralgables.com/department/communications-and-public-affairs/services/coral-gables-television" className="coralgablesTV">Coral Gables TV</a></li>
                     </ul>
                 </div>
             </div>
