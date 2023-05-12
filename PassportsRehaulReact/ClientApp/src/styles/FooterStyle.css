@@ -86,55 +86,67 @@
 
 .linkedInIcon {
     background-image: url('../assets/LinkedInIconWhite.png');
-    height: 4vh;
-    width: 4vh;
+    height: 40px;
+    width: 40px;
 }
+
+    .linkedInIcon:hover {
+        background-image: url('../assets/LinkedInIconOrange.png');
+    }
 
 .instagramIcon {
     background-image: url('../assets/InstagramIconWhite.png');
-    height: 4vh;
-    width: 4vh;
+    height: 41px;
+    width: 41px;
 }
+
+    .instagramIcon:hover {
+        background-image: url('../assets/InstagramIconOrange.png');
+    }
 
 .twitterIcon {
     background-image: url('../assets/TwitterIconWhite.png');
-    height: 4vh;
-    width: 3.5vh;
+    margin-top: 1px;
+    height: 36px;
+    width: 35px;
 }
+
+    .twitterIcon:hover {
+        background-image: url('../assets/TwitterIconOrange.png');
+    }
 
 .facebookIcon {
     background-image: url('../assets/FacebookIconWhite.png');
-    height: 4vh;
-    width: 4.5vh;
+    margin-top: -4.5px;
+    height: 50px;
+    width: 45px;
 }
+
+    .facebookIcon:hover {
+        background-image: url('../assets/FacebookIconOrange.png');
+    }
+
+.youtubeIcon {
+    background-image: url('../assets/YoutubeIconWhite.png');
+    margin-top: 1px;
+    height: 40px;
+    width: 40px;
+}
+
+    .youtubeIcon:hover {
+        background-image: url('../assets/YoutubeIconOrange.png');
+    }
 
 .nextdoorIcon {
     background-image: url('../assets/NextdoorIconWhite.png');
-}
-
-.linkedInIcon, .instagramIcon, .twitterIcon, .facebookIcon, .youtubeIcon, .nextdoorIcon {
-    background-size: cover;
-}
-
-/* adjusting the height for specific icons */
-.twitterIcon {
     margin-top: 2.5px;
-    height: 3.5vh;
+    height: 37px;
+    width: 37px;
 }
 
-.facebookIcon {
-    margin-top: -3.5px;
-    height: 5vh;
-}
-
-.youtubeIcon {
-    margin-top: 1.5px;
-}
-
-.nextdoorIcon {
-    margin-top: 2.5px;
-    height: 3.7vh;
-}
+    .nextdoorIcon:hover {
+        background-image: url('../assets/NextdoorIconOrange.png');
+    }
 
 .coralgablesTV {
     text-decoration: none;
@@ -142,6 +154,15 @@
 }
 
     .coralgablesTV:hover {
+        transition: .2s ease-in;
         text-decoration: underline;
         color: #c05818;
+    }
+
+.linkedInIcon, .instagramIcon, .twitterIcon, .facebookIcon, .youtubeIcon, .nextdoorIcon {
+    background-size: cover;
+}
+
+    .linkedInIcon:hover, .instagramIcon:hover, .twitterIcon:hover, .facebookIcon:hover, .youtubeIcon:hover, .nextdoorIcon:hover {
+        transition: background-image .2s ease-in;
     }
