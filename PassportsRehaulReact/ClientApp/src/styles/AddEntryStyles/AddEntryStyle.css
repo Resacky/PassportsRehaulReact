@@ -6,7 +6,7 @@
 
 .subHeader {
     background-color: #007073;
-    padding: 4%;
+    padding: 2%;
     margin: -10px -8px 0px -10px;
 }
 
@@ -21,11 +21,42 @@
     justify-content: center;
 }
 
+.overall{
+    display: flex;
+    justify-content: center;
+}
+
+.centering {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+    border: 2px solid;
+    width: 44vw;
+}
+
+.structure{
+    display: flex;
+    flex-direction: column;
+}
+
 .formContainer {
-    display: grid;
+    display: flex;
+    width: auto;
+}
+
+.secondColumn {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     width: auto;
-    margin-bottom: 10vh;
+    gap: 1vh;
+}
+
+.submitButtonDiv{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin-bottom: 1vh;
 }
 
 .submitButton {

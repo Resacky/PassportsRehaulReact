@@ -68,6 +68,10 @@
     margin-right: 1vw;
 }
 
+.impairmentInfo {
+    display: flex;
+}
+
 .connectWithUsHeader {
     color: #ffffff;
 }

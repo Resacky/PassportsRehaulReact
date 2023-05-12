@@ -53,37 +53,46 @@ function AddEntry() {
                 <div className="OtherPageLinksContainer">
                     <OtherPageLinks />
                 </div>
-                <form onSubmit={handleSubmit} className="formContainer">
+                <div className="overall">
+                    <div className="centering">
+                        <div className="structure">
+                            <form onSubmit={handleSubmit} className="formContainer">
 
-                    <ApplicantInformation
-                        firstName={firstName} setFirstName={setFirstName}
-                        middleName={middleName} setMiddleName={setMiddleName}
-                        lastName={lastName} setLastName={setLastName}
-                        dateOfBirth={dateOfBirth} setDateOfBirth={setDateOfBirth}
-                        phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber}
-                    />
+                                <ApplicantInformation
+                                    firstName={firstName} setFirstName={setFirstName}
+                                    middleName={middleName} setMiddleName={setMiddleName}
+                                    lastName={lastName} setLastName={setLastName}
+                                    dateOfBirth={dateOfBirth} setDateOfBirth={setDateOfBirth}
+                                    phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber}
+                                />
 
-                    <LockBoxDropdownMenu
-                        records={records} setRecords={setRecords}
-                        selectedRecord={selectedRecord} setSelectedRecord={setSelectedRecord}
-                    />
+                                <div className="secondColumn">
+                                    <LockBoxDropdownMenu
+                                        records={records} setRecords={setRecords}
+                                        selectedRecord={selectedRecord} setSelectedRecord={setSelectedRecord}
+                                    />
 
-                    <TypeOfPassportBox
-                        passportRecords={passportRecords} setPassportRecords={setPassportRecords}
-                        selectedPassportRecords={selectedPassportRecords} setSelectedPassportRecords={setSelectedPassportRecords}
-                        dateOfBirth={dateOfBirth}
-                        passportPrice={passportPrice} setPassportPrice={setPassportPrice}
-                    />
+                                    <TypeOfPassportBox
+                                        passportRecords={passportRecords} setPassportRecords={setPassportRecords}
+                                        selectedPassportRecords={selectedPassportRecords} setSelectedPassportRecords={setSelectedPassportRecords}
+                                        dateOfBirth={dateOfBirth}
+                                        passportPrice={passportPrice} setPassportPrice={setPassportPrice}
+                                    />
 
-                    <StateDepartment
-                        passportARSSD={passportARSSD} setPassportARSSD={setPassportARSSD}
-                        selectedPassportARSSD={selectedPassportARSSD} setSelectedPassportARSSD={setSelectedPassportARSSD}
-                        passportPrice={passportPrice}
-                        totalPrice={totalPrice} setTotalPrice={setTotalPrice}
-                    />
-
-                    <button type="submit" className="submitButton">Submit</button>
-                </form>
+                                    <StateDepartment
+                                        passportARSSD={passportARSSD} setPassportARSSD={setPassportARSSD}
+                                        selectedPassportARSSD={selectedPassportARSSD} setSelectedPassportARSSD={setSelectedPassportARSSD}
+                                        passportPrice={passportPrice}
+                                        totalPrice={totalPrice} setTotalPrice={setTotalPrice}
+                                    />
+                                </div>
+                            </form>
+                            <div className="submitButtonDiv">
+                                <button type="submit" className="submitButton">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Footer />
             </div>
         </>
