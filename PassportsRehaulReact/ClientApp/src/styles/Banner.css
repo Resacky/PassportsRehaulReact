@@ -11,8 +11,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: auto;
+    padding-left: 5vw;
+    padding-right: 5vw;
 }
 
 .homeCityLogo {
@@ -50,8 +51,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: auto;
+    padding-left: 5vw;
+    padding-right: 5vw;
 }
 
 .whiteCityLogo {

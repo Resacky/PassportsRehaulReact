@@ -1,5 +1,4 @@
 ﻿import React, { useState } from 'react';
-import OtherPageLinks from "../components/OtherPageLinks";
 import ApplicantInformation from "../components/ApplicantInformation";
 import LockBoxDropdownMenu from "../components/LockBox";
 import TypeOfPassportBox from "../components/TypeOfPassportBox";
@@ -49,9 +48,6 @@ function AddEntry() {
                 />
                 <div class="subHeader">
                     <label class="subHeaderText">Passport Add Entry</label>
-                </div>
-                <div className="OtherPageLinksContainer">
-                    <OtherPageLinks />
                 </div>
                 <div className="overall">
                     <div className="centering">
