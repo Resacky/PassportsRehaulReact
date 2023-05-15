@@ -12,8 +12,8 @@ using PassportsRehaulReact.Data;
 namespace PassportsRehaulReact.Migrations
 {
     [DbContext(typeof(PassportDbContext))]
-    [Migration("20230505152949_Add_PassPortFees_Table")]
-    partial class Add_PassPortFees_Table
+    [Migration("20230515131654_Add_entrybackup2_table")]
+    partial class Add_entrybackup2_table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,39 +23,6 @@ namespace PassportsRehaulReact.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("PassportsRehaulReact.Models.Employees", b =>
-                {
-                    b.Property<int>("idnum")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idnum"), 1L, 1);
-
-                    b.Property<string>("cityCell")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cityphone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("radio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("idnum");
-
-                    b.ToTable("employees");
-                });
 
             modelBuilder.Entity("PassportsRehaulReact.Models.PassPortARSCG", b =>
                 {
@@ -101,6 +68,49 @@ namespace PassportsRehaulReact.Migrations
                     b.HasKey("PPARSIDSD");
 
                     b.ToTable("PassPortARSSD");
+                });
+
+            modelBuilder.Entity("PassportsRehaulReact.Models.PassPortLockBoxes", b =>
+                {
+                    b.Property<int>("LOCKBOXID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LOCKBOXID"), 1L, 1);
+
+                    b.Property<string>("LBoxDescription")
+                        .IsRequired()
+                        .HasColumnType("char");
+
+                    b.HasKey("LOCKBOXID");
+
+                    b.ToTable("PassPortLockBoxes");
+                });
+
+            modelBuilder.Entity("PassportsRehaulReact.Models.PassportNewFees", b =>
+                {
+                    b.Property<int?>("Sort")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Sort"), 1L, 1);
+
+                    b.Property<string>("FeeDescription")
+                        .IsRequired()
+                        .HasColumnType("varchar");
+
+                    b.Property<int?>("PPFEEID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("adult")
+                        .HasColumnType("money");
+
+                    b.Property<decimal?>("minor")
+                        .HasColumnType("money");
+
+                    b.HasKey("Sort");
+
+                    b.ToTable("PassportNewFees");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,55 +12,55 @@ namespace PassportsRehaulReact.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeesController : ControllerBase
+    public class entrybackup2Controller : ControllerBase
     {
         private readonly PassportDbContext _context;
 
-        public EmployeesController(PassportDbContext context)
+        public entrybackup2Controller(PassportDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Employees
+        // GET: api/entrybackup2
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employees>>> Getemployees()
+        public async Task<ActionResult<IEnumerable<entrybackup2>>> Getentrybackup2()
         {
-          if (_context.employees == null)
+          if (_context.entrybackup2 == null)
           {
               return NotFound();
           }
-            return await _context.employees.ToListAsync();
+            return await _context.entrybackup2.ToListAsync();
         }
 
-        // GET: api/Employees/5
+        // GET: api/entrybackup2/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employees>> GetEmployees(int id)
+        public async Task<ActionResult<entrybackup2>> Getentrybackup2(int id)
         {
-          if (_context.employees == null)
+          if (_context.entrybackup2 == null)
           {
               return NotFound();
           }
-            var employees = await _context.employees.FindAsync(id);
+            var entrybackup2 = await _context.entrybackup2.FindAsync(id);
 
-            if (employees == null)
+            if (entrybackup2 == null)
             {
                 return NotFound();
             }
 
-            return employees;
+            return entrybackup2;
         }
 
-        // PUT: api/Employees/5
+        // PUT: api/entrybackup2/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployees(int id, Employees employees)
+        public async Task<IActionResult> Putentrybackup2(int id, entrybackup2 entrybackup2)
         {
-            if (id != employees.idnum)
+            if (id != entrybackup2.ENTRYID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(employees).State = EntityState.Modified;
+            _context.Entry(entrybackup2).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace PassportsRehaulReact.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeesExists(id))
+                if (!entrybackup2Exists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace PassportsRehaulReact.Controllers
             return NoContent();
         }
 
-        // POST: api/Employees
+        // POST: api/entrybackup2
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Employees>> PostEmployees(Employees employees)
+        public async Task<ActionResult<entrybackup2>> Postentrybackup2(entrybackup2 entrybackup2)
         {
-          if (_context.employees == null)
+          if (_context.entrybackup2 == null)
           {
-              return Problem("Entity set 'PassportDbContext.employees'  is null.");
+              return Problem("Entity set 'PassportDbContext.entrybackup2'  is null.");
           }
-            _context.employees.Add(employees);
+            _context.entrybackup2.Add(entrybackup2);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEmployees", new { id = employees.idnum }, employees);
+            return CreatedAtAction("Getentrybackup2", new { id = entrybackup2.ENTRYID }, entrybackup2);
         }
 
-        // DELETE: api/Employees/5
+        // DELETE: api/entrybackup2/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployees(int id)
+        public async Task<IActionResult> Deleteentrybackup2(int id)
         {
-            if (_context.employees == null)
+            if (_context.entrybackup2 == null)
             {
                 return NotFound();
             }
-            var employees = await _context.employees.FindAsync(id);
-            if (employees == null)
+            var entrybackup2 = await _context.entrybackup2.FindAsync(id);
+            if (entrybackup2 == null)
             {
                 return NotFound();
             }
 
-            _context.employees.Remove(employees);
+            _context.entrybackup2.Remove(entrybackup2);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool EmployeesExists(int id)
+        private bool entrybackup2Exists(int id)
         {
-            return (_context.employees?.Any(e => e.idnum == id)).GetValueOrDefault();
+            return (_context.entrybackup2?.Any(e => e.ENTRYID == id)).GetValueOrDefault();
         }
     }
 }

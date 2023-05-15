@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-/* this is apparently important */
+/* this is apparently important to connect to the SQL database */
 builder.Services.AddDbContext<PassportDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
 
 builder.Services.AddControllersWithViews();
