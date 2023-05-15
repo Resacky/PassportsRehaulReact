@@ -84,7 +84,7 @@ function AddEntry() {
         };
         /* debugging */
         let parsedJSON = JSON.stringify(model);
-        console.log(parsedJSON);
+        //console.log(parsedJSON);
         /* the actual POST request and parsing through all the JSON */
         fetch('https://localhost:7243/api/entrybackup2', {
             method: 'POST',
