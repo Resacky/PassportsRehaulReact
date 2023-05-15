@@ -50,9 +50,8 @@ function AddEntry() {
                 </div>
                 <div className="overall">
                     <div className="centering">
-                        <div className="structure">
-                            <form onSubmit={handleSubmit} className="formContainer">
-
+                        <form onSubmit={handleSubmit} className="formContainer">
+                            <div className="structure">
                                 <ApplicantInformation
                                     firstName={firstName} setFirstName={setFirstName}
                                     middleName={middleName} setMiddleName={setMiddleName}
@@ -60,7 +59,6 @@ function AddEntry() {
                                     dateOfBirth={dateOfBirth} setDateOfBirth={setDateOfBirth}
                                     phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber}
                                 />
-
                                 <div className="secondColumn">
                                     <LockBoxDropdownMenu
                                         records={records} setRecords={setRecords}
@@ -81,11 +79,11 @@ function AddEntry() {
                                         totalPrice={totalPrice} setTotalPrice={setTotalPrice}
                                     />
                                 </div>
-                            </form>
+                            </div>
                             <div className="submitButtonDiv">
                                 <button type="submit" className="submitButton">Submit</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

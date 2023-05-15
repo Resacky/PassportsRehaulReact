@@ -42,14 +42,13 @@
     width: 44vw;
 }
 
-.structure{
+.structure {
     display: flex;
-    flex-direction: column;
 }
 
 .formContainer {
     display: flex;
-    width: auto;
+    flex-direction: column;
 }
 
 .secondColumn {
