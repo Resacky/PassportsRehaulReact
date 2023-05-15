@@ -30,6 +30,23 @@ function AddEntry() {
         event.preventDefault();
         console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
 
+        //const model = {
+        //    prop1: 'value1',
+        //    prop2: 'value2'
+        //    // ... other properties of your model
+        //};
+
+        //fetch('https://your-server/api/your-controller', {
+        //    method: 'POST',
+        //    headers: {
+        //        'Content-Type': 'application/json'
+        //    },
+        //    body: JSON.stringify(model)
+        //})
+        //    .then(response => response.json())
+        //    .then(data => console.log(data))
+        //    .catch(error => console.error('Error:', error));
+
         setFirstName('');
         setMiddleName('');
         setLastName('');
