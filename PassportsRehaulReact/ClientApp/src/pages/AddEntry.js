@@ -41,11 +41,12 @@ function AddEntry() {
             console.error('There was an error within the data clean up of the date of birth', e);
         }
         /* data clean up of phone number */
+        /* this try catch and the next one is not being set off as the phoneNumber variable are empty string not null and the timestamp is never null to throw an error */
         let cleanedPhoneNumber = null;
         try {
             cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
         } catch (e) {
-            console.error('There was an error within the data clean up of the date of birth', e);
+            console.error('There was an error within the data clean up of the phone number', e);
         }
         /* data clean up of the date creation */
         let formattedDateCreated = null;
