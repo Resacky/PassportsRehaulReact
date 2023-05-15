@@ -22,6 +22,91 @@ namespace PassportsRehaulReact.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("PassportsRehaulReact.Models.entrybackup2", b =>
+                {
+                    b.Property<int>("ENTRYID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ENTRYID"), 1L, 1);
+
+                    b.Property<decimal?>("ARSCG")
+                        .HasColumnType("money");
+
+                    b.Property<double?>("ARSSD")
+                        .HasColumnType("float");
+
+                    b.Property<bool?>("AmendedPass")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("AppFirst")
+                        .HasColumnType("char");
+
+                    b.Property<string>("AppLast")
+                        .HasColumnType("char");
+
+                    b.Property<string>("AppMiddle")
+                        .HasColumnType("char");
+
+                    b.Property<double?>("CheckSD")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nchar");
+
+                    b.Property<DateTime?>("DOB")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime?>("Departure")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("LBoxDescription")
+                        .HasColumnType("char");
+
+                    b.Property<bool?>("NoFeePass")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("PassPortFee")
+                        .HasColumnType("money");
+
+                    b.Property<decimal?>("PassPortFeeCG")
+                        .HasColumnType("money");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("char");
+
+                    b.Property<double?>("PhotosFee")
+                        .HasColumnType("float");
+
+                    b.Property<bool?>("RegularPass")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nchar");
+
+                    b.Property<string>("amended")
+                        .HasColumnType("char(1)");
+
+                    b.Property<double?>("cash")
+                        .HasColumnType("float");
+
+                    b.Property<string>("nofee")
+                        .HasColumnType("char(1)");
+
+                    b.Property<string>("regular")
+                        .HasColumnType("char(1)");
+
+                    b.Property<double?>("total")
+                        .HasColumnType("float");
+
+                    b.HasKey("ENTRYID");
+
+                    b.ToTable("entrybackup2");
+                });
+
             modelBuilder.Entity("PassportsRehaulReact.Models.PassPortARSCG", b =>
                 {
                     b.Property<int>("PPARSIDCG")

@@ -31,7 +31,7 @@ const LockBoxDropdownMenu = ({
             <select id="recordSelect" value={selectedRecord} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>
                 {records.map((record) => (
-                    <option key={record.lockboxid} value={record.lockboxid}>
+                    <option key={record.lockboxid} value={record.lBoxDescription}>
                         {record.lBoxDescription}
                     </option>
                 ))}

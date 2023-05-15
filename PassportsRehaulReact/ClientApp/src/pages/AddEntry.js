@@ -15,8 +15,8 @@ function AddEntry() {
     let [dateOfBirth, setDateOfBirth] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
-    const [records, setRecords] = useState([]);
-    const [selectedRecord, setSelectedRecord] = useState();
+    const [lockBoxRecords, setLockBoxRecords] = useState([]);
+    const [selectedLockBoxRecords, setSelectedLockBoxRecords] = useState();
 
     const [passportRecords, setPassportRecords] = useState([]);
     const [selectedPassportRecords, setSelectedPassportRecords] = useState();
@@ -28,24 +28,74 @@ function AddEntry() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedRecord}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
 
-        //const model = {
-        //    prop1: 'value1',
-        //    prop2: 'value2'
-        //    // ... other properties of your model
-        //};
-
-        //fetch('https://your-server/api/your-controller', {
-        //    method: 'POST',
-        //    headers: {
-        //        'Content-Type': 'application/json'
-        //    },
-        //    body: JSON.stringify(model)
-        //})
-        //    .then(response => response.json())
-        //    .then(data => console.log(data))
-        //    .catch(error => console.error('Error:', error));
+        /* this is necessary clean up the data a little bit to have the SQL database recogize the formatting of the JSON to pass it into the POST request */
+        /* data clean up of DOB */
+        let formatedDOB = null;
+        try {
+            let DOBDate = new Date(dateOfBirth);
+            formatedDOB = DOBDate.toISOString();
+            formatedDOB = formatedDOB.split('.')[0];
+        } catch (e) {
+            console.error('There was an error within the data clean up of the date of birth', e);
+        }
+        /* data clean up of phone number */
+        let cleanedPhoneNumber = null;
+        try {
+            cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
+        } catch (e) {
+            console.error('There was an error within the data clean up of the date of birth', e);
+        }
+        /* data clean up of the date creation */
+        let formattedDateCreated = null;
+        try {
+            let dateCreated = new Date();
+            formattedDateCreated = dateCreated.toISOString();
+            formattedDateCreated = formattedDateCreated.split('.')[0];
+        } catch (e) {
+            console.error('There was an error within the data clean up of the date creation timestamp', e);
+        }
+        /* this is to create the JSON model to then pass it onto the POST request */
+        const model = {
+            'appFirst': firstName,
+            'appMiddle': middleName,
+            'appLast': lastName,
+            'dob': formatedDOB,
+            'zipCode': null,
+            'phone': cleanedPhoneNumber,
+            'regularPass': true,
+            'noFeePass': null,
+            'amendedPass': null,
+            'lBoxDescription': selectedLockBoxRecords,
+            'arssd': selectedPassportARSSD,
+            'passPortFee': 0,
+            'arscg': null,
+            'photosFee': null,
+            'checkSD': totalPrice,
+            'departure': null,
+            'created': formattedDateCreated,
+            'createdBy': null,
+            'cash': null,
+            'total': totalPrice,
+            'regular': null,
+            'nofee': null,
+            'amended': null,
+        };
+        /* debugging */
+        let parsedJSON = JSON.stringify(model);
+        console.log(parsedJSON);
+        /* the actual POST request and parsing through all the JSON */
+        fetch('https://localhost:7243/api/entrybackup2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: parsedJSON
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
 
         setFirstName('');
         setMiddleName('');
@@ -78,8 +128,8 @@ function AddEntry() {
                                 />
                                 <div className="secondColumn">
                                     <LockBoxDropdownMenu
-                                        records={records} setRecords={setRecords}
-                                        selectedRecord={selectedRecord} setSelectedRecord={setSelectedRecord}
+                                        records={lockBoxRecords} setRecords={setLockBoxRecords}
+                                        selectedRecord={selectedLockBoxRecords} setSelectedRecord={setSelectedLockBoxRecords}
                                     />
 
                                     <TypeOfPassportBox
