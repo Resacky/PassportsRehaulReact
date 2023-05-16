@@ -92,8 +92,7 @@ function AddEntry() {
         formattedDateCreated = dateCreated.toISOString();
         formattedDateCreated = formattedDateCreated.split('.')[0];
         /* for debugging, this should only be set off if all error use cases pass */
-        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
-
+        //console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
         /* this is to create the JSON model to then pass it onto the POST request */
         const model = {
             'appFirst': firstName,
@@ -133,16 +132,23 @@ function AddEntry() {
             },
             body: parsedJSON
         })
-            .then(response => response.json())
+            .then(response => {
+                /* check of successful POST request */
+                if (response.status === 201) {
+                    /* reset of all form fields */
+                    setFirstName('');
+                    setMiddleName('');
+                    setLastName('');
+                    setDateOfBirth('');
+                    setPhoneNumber('');
+                    setSelectedLockBoxRecords('');
+                    setSelectedPassportRecords('');
+                    setSelectedPassportARSSD('');
+                }
+                return response.json();
+            })
             .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
-
-        setFirstName('');
-        setMiddleName('');
-        setLastName('');
-        setDateOfBirth('');
-        setPhoneNumber('');
-        /* find a way to clear the dropboxes to the defaults after clicking submit */
     };
 
     return (
