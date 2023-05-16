@@ -22,3 +22,10 @@ th {
     background-color: #4caf50;
     color: white;
 }
+
+.pagination-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1vh;
+    margin: 1vh;
+}
