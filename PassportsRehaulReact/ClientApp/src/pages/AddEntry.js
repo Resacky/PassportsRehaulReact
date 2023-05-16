@@ -4,6 +4,7 @@ import LockBoxDropdownMenu from "../components/LockBox";
 import TypeOfPassportBox from "../components/TypeOfPassportBox";
 import StateDepartment from "../components/StateDepartment";
 import Banner from '../components/Banner';
+import ErrorHandlingBox from '../components/ErrorHandlingBox';
 
 import "../styles/AddEntryStyles/AddEntryStyle.css";
 
@@ -26,11 +27,19 @@ function AddEntry() {
     const [selectedPassportARSSD, setSelectedPassportARSSD] = useState();
     const [totalPrice, setTotalPrice] = useState();
 
+    const [errorHandling, setErrorHandling] = useState(false);
+    const [errorHandlingMessage, setErrorHandlingMessage] = useState('');
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
-
         /* this is necessary clean up the data a little bit to have the SQL database recogize the formatting of the JSON to pass it into the POST request */
+        /* check if firstName and lastName are populated and not empty */
+        if (firstName == '') {
+            setErrorHandling(true);
+            setErrorHandlingMessage('First name is not populated');
+            return;
+        }
+
         /* data clean up of DOB */
         let formatedDOB = null;
         try {
@@ -43,60 +52,70 @@ function AddEntry() {
         /* data clean up of phone number */
         /* this try catch and the next one is not being set off as the phoneNumber variable are empty string not null and the timestamp is never null to throw an error */
         let cleanedPhoneNumber = null;
-        try {
-            cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
-        } catch (e) {
-            console.error('There was an error within the data clean up of the phone number', e);
-        }
-        /* data clean up of the date creation */
-        let formattedDateCreated = null;
-        try {
-            let dateCreated = new Date();
-            formattedDateCreated = dateCreated.toISOString();
-            formattedDateCreated = formattedDateCreated.split('.')[0];
-        } catch (e) {
-            console.error('There was an error within the data clean up of the date creation timestamp', e);
-        }
+
+
+
+        //try {
+        //    cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
+        //} catch (e) {
+        //    console.error('There was an error within the data clean up of the phone number', e);
+        //}
+
+        ///* data clean up of the date creation */
+        //let formattedDateCreated = null;
+        //try {
+        //    let dateCreated = new Date();
+        //    formattedDateCreated = dateCreated.toISOString();
+        //    formattedDateCreated = formattedDateCreated.split('.')[0];
+        //} catch (e) {
+        //    console.error('There was an error within the data clean up of the date creation timestamp', e);
+        //}
+
+        /* for debugging, this should only be set off if all error use cases pass */
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
+
         /* this is to create the JSON model to then pass it onto the POST request */
-        const model = {
-            'appFirst': firstName,
-            'appMiddle': middleName,
-            'appLast': lastName,
-            'dob': formatedDOB,
-            'zipCode': null,
-            'phone': cleanedPhoneNumber,
-            'regularPass': true,
-            'noFeePass': null,
-            'amendedPass': null,
-            'lBoxDescription': selectedLockBoxRecords,
-            'arssd': selectedPassportARSSD,
-            'passPortFee': 0,
-            'arscg': null,
-            'photosFee': null,
-            'checkSD': totalPrice,
-            'departure': null,
-            'created': formattedDateCreated,
-            'createdBy': null,
-            'cash': null,
-            'total': totalPrice,
-            'regular': null,
-            'nofee': null,
-            'amended': null,
-        };
+        //const model = {
+        //    'appFirst': firstName,
+        //    'appMiddle': middleName,
+        //    'appLast': lastName,
+        //    'dob': formatedDOB,
+        //    'zipCode': null,
+        //    'phone': cleanedPhoneNumber,
+        //    'regularPass': true,
+        //    'noFeePass': null,
+        //    'amendedPass': null,
+        //    'lBoxDescription': selectedLockBoxRecords,
+        //    'arssd': selectedPassportARSSD,
+        //    'passPortFee': 0,
+        //    'arscg': null,
+        //    'photosFee': null,
+        //    'checkSD': totalPrice,
+        //    'departure': null,
+        //    'created': formattedDateCreated,
+        //    'createdBy': null,
+        //    'cash': null,
+        //    'total': totalPrice,
+        //    'regular': null,
+        //    'nofee': null,
+        //    'amended': null,
+        //};
+
         /* debugging */
-        let parsedJSON = JSON.stringify(model);
+        //let parsedJSON = JSON.stringify(model);
         //console.log(parsedJSON);
+
         /* the actual POST request and parsing through all the JSON */
-        fetch('https://localhost:7243/api/entrybackup2', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: parsedJSON
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+        //fetch('https://localhost:7243/api/entrybackup2', {
+        //    method: 'POST',
+        //    headers: {
+        //        'Content-Type': 'application/json'
+        //    },
+        //    body: parsedJSON
+        //})
+        //    .then(response => response.json())
+        //    .then(data => console.log(data))
+        //    .catch(error => console.error('Error:', error));
 
         setFirstName('');
         setMiddleName('');
@@ -154,6 +173,10 @@ function AddEntry() {
                         </form>
                     </div>
                 </div>
+                <ErrorHandlingBox isOpen={errorHandling} onClose={() => setErrorHandling(false)}>
+                    <h2>Error</h2>
+                    <p>{errorHandlingMessage}</p>
+                </ErrorHandlingBox>
             </div>
         </>
     );
