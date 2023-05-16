@@ -9,12 +9,14 @@
     align-items: center;
     background-color: rgba(0,0,0,0.3);
     z-index: 9999;
+    transition: opacity 0.3s ease;
 }
 
 .modal-content {
     padding: 20px;
-    background: #fff;
-    border-radius: 2px;
+    background: #fafafa; /* light gray */
+    border: 1px solid #ccc; /* light gray border */
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,12 +25,39 @@
     margin: 1rem;
     position: relative;
     min-width: 300px;
-    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
 
+    .modal-content h2 {
+        font-family: 'Arial', sans-serif;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .modal-content p {
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* ask for styling opinions */
 .errorOK {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 3vw;
+/*    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+*/
 }
+
+    .errorOK:hover {
+/*        background-color: #0056b3;
+*/    }
