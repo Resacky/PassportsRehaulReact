@@ -1,6 +1,8 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import '../styles/SearchAndEditEntryStyles/entryFetchStyle.css';
+
 const EntryFetch = () => {
     const [entryData, setEntryData] = useState([]);
 
@@ -17,18 +19,39 @@ const EntryFetch = () => {
     }, []);
 
     return (
-        <>
-            <div>
-                <h2>Entry Database</h2>
-                <ul>
+        <div>
+            <h2>Entry Database</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Created</th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Phone</th>
+                        <th>Box Description</th>
+                        <th>ARSSD</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {entryData.map(item => (
-                        <li key={item.entryid}>
-                            {item.appFirst}, {item.appMiddle}, {item.appLast}, {item.dob}, {item.zipcode}, {item.phone}, {item.regularpass}, {item.nofeepass}, {item.amendedpass}, {item.lboxdescription}
-                        </li>
+                        <tr key={item.entryid}>
+                            <td>{item.created}</td>
+                            <td>{item.appFirst}</td>
+                            <td>{item.appMiddle}</td>
+                            <td>{item.appLast}</td>
+                            <td>{item.dob}</td>
+                            <td>{item.phone}</td>
+                            <td>{item.lBoxDescription}</td>
+                            <td>${item.arssd}</td>
+                            <td>${item.total}</td>
+                        </tr>
                     ))}
-                </ul>
-            </div>
-        </>
+                </tbody>
+            </table>
+        </div>
     );
 };
 
