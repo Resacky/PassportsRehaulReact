@@ -10,7 +10,7 @@ function SearchAndEditEntry() {
     const [checkedID, setCheckedID] = useState();
     const [checkedStatus, setCheckedStatus] = useState(false);
 
-    const handleCloseOptions = () => {
+    const handleCloseOption = () => {
         setCheckedStatus(false);
     }
 
@@ -41,7 +41,7 @@ function SearchAndEditEntry() {
                 />
                 <OptionsBox
                     isOpen={checkedStatus}
-                    onClose={handleCloseOptions}
+                    onClose={handleCloseOption}
                     onEdit={handleEditOption}
                     onDelete={handleDeleteOption}
                 >
