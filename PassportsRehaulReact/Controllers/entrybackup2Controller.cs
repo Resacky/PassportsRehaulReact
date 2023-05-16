@@ -32,6 +32,20 @@ namespace PassportsRehaulReact.Controllers
             return await _context.entrybackup2.ToListAsync();
         }
 
+        // GET: api/entrybackup2/recent
+        [HttpGet("recent")]
+        public async Task<ActionResult<IEnumerable<entrybackup2>>> GetRecententrybackup2()
+        {
+            if (_context.entrybackup2 == null)
+            {
+                return NotFound();
+            }
+            return await _context.entrybackup2
+                .OrderByDescending(e => e.ENTRYID) // Sorts by ENTRYID in descending order
+                .Take(100)
+                .ToListAsync();
+        }
+
         // GET: api/entrybackup2/5
         [HttpGet("{id}")]
         public async Task<ActionResult<entrybackup2>> Getentrybackup2(int id)

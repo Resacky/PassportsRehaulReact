@@ -1,7 +1,9 @@
 ﻿import React from 'react';
 import '../styles/SearchAndEditEntryStyles/optionsBoxStyle.css';
 
-const optionsBox = ({ isOpen, onClose, onEdit, onDelete, children }) => {
+const OptionsBox = ({
+    isOpen, onClose, onEdit, onDelete, children
+}) => {
     if (!isOpen) {
         return null;
     }
@@ -18,4 +20,4 @@ const optionsBox = ({ isOpen, onClose, onEdit, onDelete, children }) => {
     );
 };
 
-export default optionsBox;
+export default OptionsBox;

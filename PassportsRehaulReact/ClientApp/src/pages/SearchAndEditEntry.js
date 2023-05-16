@@ -1,12 +1,18 @@
 ﻿import React, { useState } from 'react';
 import Banner from '../components/Banner';
 import EntryFetch from '../components/entryFetch';
-import optionsBox from '../components/optionsBox';
+import OptionsBox from '../components/optionsBox';
 
 import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
 
 function SearchAndEditEntry() {
 
+    const [checkedID, setCheckedID] = useState();
+    const [checkedStatus, setCheckedStatus] = useState(false);
+
+    const handleCloseOptions = () => {
+        setCheckedStatus(false);
+    }
 
     return (
         <>
@@ -18,7 +24,14 @@ function SearchAndEditEntry() {
                 <div class="subHeader">
                     <label class="subHeaderText">Search And Edit Entries</label>
                 </div>
-                <EntryFetch />
+                <EntryFetch
+                    checkedID={checkedID}
+                    setCheckedID={setCheckedID}
+                    setCheckedStatus={setCheckedStatus}
+                />
+                <OptionsBox isOpen={checkedStatus} onClose={handleCloseOptions}>
+                    <h2>{checkedID}</h2>
+                </OptionsBox>
             </div>
         </>
     );

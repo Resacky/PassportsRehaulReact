@@ -4,21 +4,26 @@ import axios from 'axios';
 import '../styles/SearchAndEditEntryStyles/entryFetchStyle.css';
 
 const EntryFetch = ({
-    
+    checkedID, setCheckedID, setCheckedStatus,
 }) => {
     const [entryData, setEntryData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:7243/api/entrybackup2/234859');
-                setEntryData([response.data]);
+                const response = await axios.get('https://localhost:7243/api/entrybackup2/recent');
+                setEntryData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchData();
     }, []);
+
+    const handleChange = (event) => {
+        setCheckedID(event.target.name);
+        setCheckedStatus(event.target.checked);
+    }
 
     return (
         <div>
@@ -41,8 +46,7 @@ const EntryFetch = ({
                 <tbody>
                     {entryData.map(item => (
                         <tr key={item.entryid}>
-                            <td><input type="checkbox" name={item.entryid} checked="" onChange="" /></td>
-                            <td>{item.created}</td>
+                            <td><input type="checkbox" name={item.entryid} checked={checkedID === item.entryid} onChange={handleChange} /></td>                            <td>{item.created}</td>
                             <td>{item.appFirst}</td>
                             <td>{item.appMiddle}</td>
                             <td>{item.appLast}</td>
