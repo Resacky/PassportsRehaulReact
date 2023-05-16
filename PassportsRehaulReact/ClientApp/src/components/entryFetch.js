@@ -40,6 +40,7 @@ const EntryFetch = ({
                         <th>Date of Birth</th>
                         <th>Phone</th>
                         <th>Box Description</th>
+                        <th>Passport Price</th>
                         <th>ARSSD</th>
                         <th>Total</th>
                     </tr>
@@ -56,8 +57,9 @@ const EntryFetch = ({
                             <td>{item.dob}</td>
                             <td>{item.phone}</td>
                             <td>{item.lBoxDescription}</td>
-                            <td>${item.arssd}</td>
-                            <td>${item.total}</td>
+                            <td>${item.passPortFee}</td>
+                            <td>${item.arssd || 0}</td>
+                            <td>${item.total || 0}</td>
                         </tr>
                     ))}
                 </tbody>

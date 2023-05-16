@@ -107,7 +107,7 @@ function AddEntry() {
             'amendedPass': null,
             'lBoxDescription': selectedLockBoxRecords,
             'arssd': selectedPassportARSSD,
-            'passPortFee': 0,
+            'passPortFee': passportPrice,
             'arscg': null,
             'photosFee': null,
             'checkSD': totalPrice,
