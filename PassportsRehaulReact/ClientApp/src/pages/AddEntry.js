@@ -10,6 +10,7 @@ import "../styles/AddEntryStyles/AddEntryStyle.css";
 
 function AddEntry() {
 
+    /* variables for the form */
     const [firstName, setFirstName] = useState('');
     const [middleName, setMiddleName] = useState('');
     const [lastName, setLastName] = useState('');
