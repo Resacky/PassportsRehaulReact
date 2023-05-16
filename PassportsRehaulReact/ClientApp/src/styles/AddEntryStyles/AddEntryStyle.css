@@ -69,3 +69,13 @@
 .submitButton {
 
 }
+
+.errorHeader {
+    display: flex;
+    justify-content: center;
+}
+
+.errorMessage {
+    display: flex;
+    justify-content: center;
+}

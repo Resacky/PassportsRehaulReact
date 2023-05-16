@@ -200,8 +200,8 @@ function AddEntry() {
                     </div>
                 </div>
                 <ErrorHandlingBox isOpen={errorHandling} onClose={() => setErrorHandling(false)}>
-                    <h2>Error</h2>
-                    <p>{errorHandlingMessage}</p>
+                    <h2 className="errorHeader">Error</h2>
+                    <p className="errorMessage">{errorHandlingMessage}</p>
                 </ErrorHandlingBox>
             </div>
         </>

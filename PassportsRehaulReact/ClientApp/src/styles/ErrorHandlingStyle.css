@@ -15,11 +15,20 @@
     padding: 20px;
     background: #fff;
     border-radius: 2px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-height: 300px;
     margin: 1rem;
     position: relative;
     min-width: 300px;
     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
-    justify-self: center;
+}
+
+.errorOK {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3vw;
 }
