@@ -8,7 +8,6 @@ import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
 function SearchAndEditEntry() {
 
 
-
     return (
         <>
             <div className="mainContainer">
@@ -20,7 +19,6 @@ function SearchAndEditEntry() {
                     <label class="subHeaderText">Search And Edit Entries</label>
                 </div>
                 <EntryFetch />
-                <optionsBox />
             </div>
         </>
     );

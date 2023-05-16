@@ -3,9 +3,10 @@ import axios from 'axios';
 
 import '../styles/SearchAndEditEntryStyles/entryFetchStyle.css';
 
-const EntryFetch = () => {
+const EntryFetch = ({
+    
+}) => {
     const [entryData, setEntryData] = useState([]);
-    const [checkedItems, setCheckedItems] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,10 +19,6 @@ const EntryFetch = () => {
         };
         fetchData();
     }, []);
-
-    const handleChange = event => {
-        setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
-    };
 
     return (
         <div>
@@ -44,7 +41,7 @@ const EntryFetch = () => {
                 <tbody>
                     {entryData.map(item => (
                         <tr key={item.entryid}>
-                            <td><input type="checkbox" name={item.entryid} checked={checkedItems[item.entryid] || false} onChange={handleChange} /></td>
+                            <td><input type="checkbox" name={item.entryid} checked="" onChange="" /></td>
                             <td>{item.created}</td>
                             <td>{item.appFirst}</td>
                             <td>{item.appMiddle}</td>

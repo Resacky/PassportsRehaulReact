@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import '../styles/SearchAndEditEntryStyles/optionsBoxStyle.css';
 
-const optionsBox = ({ isOpen, onClose, children }) => {
+const optionsBox = ({ isOpen, onClose, onEdit, onDelete, children }) => {
     if (!isOpen) {
         return null;
     }
@@ -10,7 +10,9 @@ const optionsBox = ({ isOpen, onClose, children }) => {
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
                 {children}
-                <button className="errorOK" onClick={onClose}>OK</button>
+                <button className="option-button" onClick={onEdit}>Edit</button>
+                <button className="option-button" onClick={onDelete}>Delete</button>
+                <button className="option-button" onClick={onClose}>Cancel</button>
             </div>
         </div>
     );
