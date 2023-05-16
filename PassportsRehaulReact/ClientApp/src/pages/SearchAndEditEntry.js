@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import Banner from '../components/Banner';
 import EntryFetch from '../components/entryFetch';
+import optionsBox from '../components/optionsBox';
 
 import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
 
@@ -18,7 +19,8 @@ function SearchAndEditEntry() {
                 <div class="subHeader">
                     <label class="subHeaderText">Search And Edit Entries</label>
                 </div>
-                <EntryFetch/>
+                <EntryFetch />
+                <optionsBox />
             </div>
         </>
     );

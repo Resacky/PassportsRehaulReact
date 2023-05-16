@@ -5,6 +5,7 @@ import '../styles/SearchAndEditEntryStyles/entryFetchStyle.css';
 
 const EntryFetch = () => {
     const [entryData, setEntryData] = useState([]);
+    const [checkedItems, setCheckedItems] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,12 +19,17 @@ const EntryFetch = () => {
         fetchData();
     }, []);
 
+    const handleChange = event => {
+        setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
+    };
+
     return (
         <div>
             <h2>Entry Database</h2>
             <table>
                 <thead>
                     <tr>
+                        <th>Select</th>
                         <th>Created</th>
                         <th>First Name</th>
                         <th>Middle Name</th>
@@ -38,6 +44,7 @@ const EntryFetch = () => {
                 <tbody>
                     {entryData.map(item => (
                         <tr key={item.entryid}>
+                            <td><input type="checkbox" name={item.entryid} checked={checkedItems[item.entryid] || false} onChange={handleChange} /></td>
                             <td>{item.created}</td>
                             <td>{item.appFirst}</td>
                             <td>{item.appMiddle}</td>
