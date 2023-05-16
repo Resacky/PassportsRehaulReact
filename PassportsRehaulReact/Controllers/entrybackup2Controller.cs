@@ -32,17 +32,36 @@ namespace PassportsRehaulReact.Controllers
             return await _context.entrybackup2.ToListAsync();
         }
 
+        /* this GET request gets in decending order the highest element within the primary key in decending order to 100 records */
         // GET: api/entrybackup2/recent
+        //[HttpGet("recent")]
+        //public async Task<ActionResult<IEnumerable<entrybackup2>>> GetRecententrybackup2()
+        //{
+        //    if (_context.entrybackup2 == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return await _context.entrybackup2
+        //        .OrderByDescending(e => e.ENTRYID) // Sorts by ENTRYID in descending order
+        //        .Take(100)
+        //        .ToListAsync();
+        //}
+
+        // GET: api/entrybackup2/recent?page=1&size=20
         [HttpGet("recent")]
-        public async Task<ActionResult<IEnumerable<entrybackup2>>> GetRecententrybackup2()
+        public async Task<ActionResult<IEnumerable<entrybackup2>>> GetRecententrybackup2([FromQuery] int page = 1, [FromQuery] int size = 20)
         {
             if (_context.entrybackup2 == null)
             {
                 return NotFound();
             }
+
+            int skip = (page - 1) * size;
+
             return await _context.entrybackup2
                 .OrderByDescending(e => e.ENTRYID) // Sorts by ENTRYID in descending order
-                .Take(100)
+                .Skip(skip) // Skips the records before the current page
+                .Take(size) // Takes the records for the current page
                 .ToListAsync();
         }
 

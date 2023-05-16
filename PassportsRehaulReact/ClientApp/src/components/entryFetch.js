@@ -7,18 +7,19 @@ const EntryFetch = ({
     checkedID, setCheckedID, setCheckedStatus,
 }) => {
     const [entryData, setEntryData] = useState([]);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:7243/api/entrybackup2/recent');
+                const response = await axios.get(`https://localhost:7243/api/entrybackup2/recent?page=${page}&size=20`);
                 setEntryData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchData();
-    }, []);
+    }, [page]);
 
     const handleChange = (event) => {
         setCheckedID(event.target.name);
@@ -64,6 +65,10 @@ const EntryFetch = ({
                     ))}
                 </tbody>
             </table>
+            <div className="pagination-buttons">
+                <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+                <button onClick={() => setPage(page + 1)}>Next</button>
+            </div>
         </div>
     );
 };
