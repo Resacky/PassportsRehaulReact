@@ -11,10 +11,12 @@ const OptionsBox = ({
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
-                {children}
-                <button className="option-button" onClick={onEdit}>Edit</button>
-                <button className="option-button" onClick={onDelete}>Delete</button>
-                <button className="option-button" onClick={onClose}>Cancel</button>
+                <div>{children}</div>
+                <div className="buttons-container">
+                    <button className="option-button" onClick={onEdit}>Edit</button>
+                    <button className="option-button" onClick={onDelete}>Delete</button>
+                    <button className="option-button" onClick={onClose}>Cancel</button>
+                </div>
             </div>
         </div>
     );

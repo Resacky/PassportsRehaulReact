@@ -18,8 +18,7 @@
     border: 1px solid #ccc; /* light gray border */
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; /* Stack content vertically */
     align-items: center;
     min-height: 300px;
     margin: 1rem;
@@ -29,19 +28,9 @@
     transition: all 0.3s ease;
 }
 
-/*    .modal-content h2 {
-        font-family: 'Arial', sans-serif;
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    .modal-content p {
-        font-family: 'Arial', sans-serif;
-        font-size: 16px;
-        color: #666;
-        line-height: 1.6;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-*/
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to the next row */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Add space between children and buttons */
+}
