@@ -32,6 +32,7 @@ const EntryFetch = ({
                 <thead>
                     <tr>
                         <th>Select</th>
+                        <th>EntryID</th>
                         <th>Created</th>
                         <th>First Name</th>
                         <th>Middle Name</th>
@@ -46,7 +47,9 @@ const EntryFetch = ({
                 <tbody>
                     {entryData.map(item => (
                         <tr key={item.entryid}>
-                            <td><input type="checkbox" name={item.entryid} checked={checkedID === item.entryid} onChange={handleChange} /></td>                            <td>{item.created}</td>
+                            <td><input type="checkbox" name={item.entryid} checked={checkedID === item.entryid} onChange={handleChange} /></td>
+                            <td>{item.entryid}</td>
+                            <td>{item.created}</td>
                             <td>{item.appFirst}</td>
                             <td>{item.appMiddle}</td>
                             <td>{item.appLast}</td>
