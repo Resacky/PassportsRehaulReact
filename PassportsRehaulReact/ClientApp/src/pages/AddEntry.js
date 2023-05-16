@@ -32,14 +32,19 @@ function AddEntry() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        /* this is necessary clean up the data a little bit to have the SQL database recogize the formatting of the JSON to pass it into the POST request */
+        /* this is necessary to clean up the data a little bit to have the SQL database recogize the formatting of the JSON to pass it into the POST request */
         /* check if firstName and lastName are populated and not empty */
         if (firstName == '') {
             setErrorHandling(true);
             setErrorHandlingMessage('First name is not populated');
             return;
         }
-
+        /* lastName check */
+        if (lastName == '') {
+            setErrorHandling(true);
+            setErrorHandlingMessage('Last name is not populated');
+            return;
+        }
         /* data clean up of DOB */
         let formatedDOB = null;
         try {
@@ -47,29 +52,29 @@ function AddEntry() {
             formatedDOB = DOBDate.toISOString();
             formatedDOB = formatedDOB.split('.')[0];
         } catch (e) {
+            /* error handling of DOB, if the error is something else print out the error onto the console, this is to distinguish what is a user error or not */
+            if (dateOfBirth == '') {
+                setErrorHandling(true);
+                setErrorHandlingMessage('Date of birth is not populated');
+                return;
+            }
             console.error('There was an error within the data clean up of the date of birth', e);
         }
-        /* data clean up of phone number */
-        /* this try catch and the next one is not being set off as the phoneNumber variable are empty string not null and the timestamp is never null to throw an error */
+        /* phone number check */
         let cleanedPhoneNumber = null;
+        if (phoneNumber == '') {
+            setErrorHandling(true);
+            setErrorHandlingMessage('Phone number is not populated');
+            return;
+        }
+        cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
+        /* data clean up of the date creation, and if it passes all user error cases then it will create a timestamp */
+        let formattedDateCreated = null;
+        let dateCreated = new Date();
+        formattedDateCreated = dateCreated.toISOString();
+        formattedDateCreated = formattedDateCreated.split('.')[0];
 
 
-
-        //try {
-        //    cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
-        //} catch (e) {
-        //    console.error('There was an error within the data clean up of the phone number', e);
-        //}
-
-        ///* data clean up of the date creation */
-        //let formattedDateCreated = null;
-        //try {
-        //    let dateCreated = new Date();
-        //    formattedDateCreated = dateCreated.toISOString();
-        //    formattedDateCreated = formattedDateCreated.split('.')[0];
-        //} catch (e) {
-        //    console.error('There was an error within the data clean up of the date creation timestamp', e);
-        //}
 
         /* for debugging, this should only be set off if all error use cases pass */
         console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
