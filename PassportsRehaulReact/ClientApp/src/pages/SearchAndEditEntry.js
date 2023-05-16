@@ -1,7 +1,25 @@
-﻿function SearchAndEditEntry() {
+﻿import React, { useState } from 'react';
+import Banner from '../components/Banner';
+import EntryFetch from '../components/entryFetch';
+
+import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
+
+function SearchAndEditEntry() {
+
+
+
     return (
         <>
-        // placeholder
+            <div className="mainContainer">
+                <Banner
+                    header="whiteHeader" headerContent="whiteHeaderContent"
+                    cityLogo="whiteCityLogo" PassportText="whitePassportText"
+                />
+                <div class="subHeader">
+                    <label class="subHeaderText">Search And Edit Entries</label>
+                </div>
+                <EntryFetch/>
+            </div>
         </>
     );
 }
