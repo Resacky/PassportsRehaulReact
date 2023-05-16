@@ -1,4 +1,9 @@
-﻿table {
+﻿.header{
+    display: flex;
+    justify-content: center;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
 }

@@ -27,7 +27,7 @@ const EntryFetch = ({
 
     return (
         <div>
-            <h2>Entry Database</h2>
+            <h2 className="header">Entry Database</h2>
             <table>
                 <thead>
                     <tr>

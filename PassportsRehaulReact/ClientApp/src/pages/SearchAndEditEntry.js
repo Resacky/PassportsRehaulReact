@@ -14,6 +14,16 @@ function SearchAndEditEntry() {
         setCheckedStatus(false);
     }
 
+    const handleEditOption = () => {
+        // your edit logic here
+        console.log("Editing entry with ID: ", checkedID);
+    }
+
+    const handleDeleteOption = () => {
+        // your delete logic here
+        console.log("Deleting entry with ID: ", checkedID);
+    }
+
     return (
         <>
             <div className="mainContainer">
@@ -29,7 +39,12 @@ function SearchAndEditEntry() {
                     setCheckedID={setCheckedID}
                     setCheckedStatus={setCheckedStatus}
                 />
-                <OptionsBox isOpen={checkedStatus} onClose={handleCloseOptions}>
+                <OptionsBox
+                    isOpen={checkedStatus}
+                    onClose={handleCloseOptions}
+                    onEdit={handleEditOption}
+                    onDelete={handleDeleteOption}
+                >
                     <h2>{checkedID}</h2>
                 </OptionsBox>
             </div>
