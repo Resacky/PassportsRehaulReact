@@ -68,59 +68,74 @@ function AddEntry() {
             return;
         }
         cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
+        /* Lockbox selection check */
+        if (selectedLockBoxRecords == null || selectedLockBoxRecords == '') {
+            setErrorHandling(true);
+            setErrorHandlingMessage('Lock Box selection is not populated');
+            return;
+        }
+        /* Passport Selection box check */
+        if (selectedPassportRecords == null || selectedPassportRecords == '') {
+            setErrorHandling(true);
+            setErrorHandlingMessage('Passport Selection box is not populated');
+            return;
+        }
+        /* ARS selection box check */
+        if (selectedPassportARSSD == null || selectedPassportARSSD == '') {
+            setErrorHandling(true);
+            setErrorHandlingMessage('Added Return Services box is not populated');
+            return;
+        }
         /* data clean up of the date creation, and if it passes all user error cases then it will create a timestamp */
         let formattedDateCreated = null;
         let dateCreated = new Date();
         formattedDateCreated = dateCreated.toISOString();
         formattedDateCreated = formattedDateCreated.split('.')[0];
-
-
-
         /* for debugging, this should only be set off if all error use cases pass */
         console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
 
         /* this is to create the JSON model to then pass it onto the POST request */
-        //const model = {
-        //    'appFirst': firstName,
-        //    'appMiddle': middleName,
-        //    'appLast': lastName,
-        //    'dob': formatedDOB,
-        //    'zipCode': null,
-        //    'phone': cleanedPhoneNumber,
-        //    'regularPass': true,
-        //    'noFeePass': null,
-        //    'amendedPass': null,
-        //    'lBoxDescription': selectedLockBoxRecords,
-        //    'arssd': selectedPassportARSSD,
-        //    'passPortFee': 0,
-        //    'arscg': null,
-        //    'photosFee': null,
-        //    'checkSD': totalPrice,
-        //    'departure': null,
-        //    'created': formattedDateCreated,
-        //    'createdBy': null,
-        //    'cash': null,
-        //    'total': totalPrice,
-        //    'regular': null,
-        //    'nofee': null,
-        //    'amended': null,
-        //};
-
+        const model = {
+            'appFirst': firstName,
+            'appMiddle': middleName,
+            'appLast': lastName,
+            'dob': formatedDOB,
+            'zipCode': null,
+            'phone': cleanedPhoneNumber,
+            'regularPass': true,
+            'noFeePass': null,
+            'amendedPass': null,
+            'lBoxDescription': selectedLockBoxRecords,
+            'arssd': selectedPassportARSSD,
+            'passPortFee': 0,
+            'arscg': null,
+            'photosFee': null,
+            'checkSD': totalPrice,
+            'departure': null,
+            'created': formattedDateCreated,
+            'createdBy': null,
+            'cash': null,
+            'total': totalPrice,
+            'regular': null,
+            'nofee': null,
+            'amended': null,
+        };
+        /* this is to have a variable dedicated with the parsed JSON */
+        let parsedJSON = JSON.stringify(model);
         /* debugging */
-        //let parsedJSON = JSON.stringify(model);
         //console.log(parsedJSON);
 
         /* the actual POST request and parsing through all the JSON */
-        //fetch('https://localhost:7243/api/entrybackup2', {
-        //    method: 'POST',
-        //    headers: {
-        //        'Content-Type': 'application/json'
-        //    },
-        //    body: parsedJSON
-        //})
-        //    .then(response => response.json())
-        //    .then(data => console.log(data))
-        //    .catch(error => console.error('Error:', error));
+        fetch('https://localhost:7243/api/entrybackup2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: parsedJSON
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
 
         setFirstName('');
         setMiddleName('');
