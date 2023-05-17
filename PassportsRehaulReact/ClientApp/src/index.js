@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 
 /* list of pages */
-import Home from './pages/Home';
 import AddEntry from './pages/AddEntry';
 import SearchAndEditEntry from './pages/SearchAndEditEntry';
 import SelectAReport from './pages/SelectAReport';
