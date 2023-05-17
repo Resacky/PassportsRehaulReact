@@ -10,8 +10,6 @@ const StateDepartment = ({
     totalPrice, setTotalPrice
 }) => {
 
-    const defaultValue = useState(0);
-
     /* This is used to communicate with the controller ASP.NET Core API to retrieve back the JSON of the SQL DB in question, any changes should reflect ASAP */
     useEffect(() => {
         const fetchData = async () => {
@@ -28,17 +26,19 @@ const StateDepartment = ({
 
     useEffect(() => {
         // Assuming both values are numbers or can be parsed into numbers
-        const total = parseFloat(selectedPassportARSSD || '0') + parseFloat(passportPrice || '0');
+        const total = (Number(selectedPassportARSSD) + Number(passportPrice)) || 0;
         setTotalPrice(total);
     }, [selectedPassportARSSD, passportPrice]);
 
     const handleSelectionChange = (e) => {
-        setSelectedPassportARSSD(e.target.value);
+        setSelectedPassportARSSD(Number(e.target.value) || 0);
     };
 
     /* Define default values for labels */
-    const displayPassportPrice = passportPrice ? passportPrice : '0.00';
-    const displaySelectedPassportARSSD = selectedPassportARSSD ? selectedPassportARSSD : '0.00';
+    const displayPassportPrice = passportPrice ? passportPrice.toFixed(2) : '0.00';
+    const displaySelectedPassportARSSD = selectedPassportARSSD ? selectedPassportARSSD.toFixed(2) : '0.00';
+
+    selectedPassportARSSD = selectedPassportARSSD || 0;
 
     return (
         <div className="SDframe">
@@ -55,10 +55,10 @@ const StateDepartment = ({
                 <div className="AddedReturnServices">
                     <label>Added Return Services</label>
                     <div>
-                        <select id="recordSelect" onChange={handleSelectionChange}>
-                            <option value={defaultValue} >-- Please choose an option --</option>
+                        <select id="recordSelect" value={selectedPassportARSSD || 0} onChange={handleSelectionChange}>
+                            <option value={0} >-- Please choose an option --</option>
                             {passportARSSD.map((record) => (
-                                <option key={record.arsDescription} value={record.arsFee}>
+                                <option key={record.arsDescription} value={Number(record.arsFee) || 0}>
                                     {record.arsDescription}
                                 </option>
                             ))}

@@ -25,7 +25,7 @@ function AddEntry() {
     let [passportPrice, setPassportPrice] = useState();
 
     const [passportARSSD, setPassportARSSD] = useState([]);
-    const [selectedPassportARSSD, setSelectedPassportARSSD] = useState();
+    const [selectedPassportARSSD, setSelectedPassportARSSD] = useState(0);
     const [totalPrice, setTotalPrice] = useState();
 
     const [totalValidation, setTotalValidation] = useState('');
@@ -97,7 +97,7 @@ function AddEntry() {
         formattedDateCreated = dateCreated.toISOString();
         formattedDateCreated = formattedDateCreated.split('.')[0];
         /* for debugging, this should only be set off if all error use cases pass */
-        //console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}`);
         /* this is to create the JSON model to then pass it onto the POST request */
         const model = {
             'appFirst': firstName,
@@ -148,7 +148,7 @@ function AddEntry() {
                     setPhoneNumber('');
                     setSelectedLockBoxRecords('');
                     setSelectedPassportRecords('');
-                    setSelectedPassportARSSD('');
+                    setSelectedPassportARSSD(0);
                 }
                 return response.json();
             })
@@ -163,8 +163,8 @@ function AddEntry() {
                     header="whiteHeader" headerContent="whiteHeaderContent"
                     cityLogo="whiteCityLogo" PassportText="whitePassportText"
                 />
-                <div class="subHeader">
-                    <label class="subHeaderText">Passport Add Entry</label>
+                <div className="subHeader">
+                    <label className="subHeaderText">Passport Add Entry</label>
                 </div>
                 <div className="overall">
                     <div className="centering">

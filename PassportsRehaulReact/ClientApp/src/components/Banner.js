@@ -11,19 +11,19 @@ function Banner({ header, headerContent, cityLogo, PassportText }) {
 
     return (
         <>
-            <div class={header} >
-                <div class={headerContent}>
+            <div className={header} >
+                <div className={headerContent}>
                     <div>
                         <a href="https://www.coralgables.com">
-                            <img src={cityLogo == 'homeCityLogo' ? CityLogoWhite : CityLogoOrange} alt="City Logo" class={cityLogo} />
+                            <img src={cityLogo == 'homeCityLogo' ? CityLogoWhite : CityLogoOrange} alt="City Logo" className={cityLogo} />
                         </a>
                     </div>
                     <div className="bannerLinks">
                         <OtherPageLinks Links="HomeLinks" ul="HomeUl" li="HomeLi" LinkStyle="primary" />
                     </div>
                     <div>
-                        <a href="https://www.coralgables.com/department/passport-acceptance-facility/passport-services" class={PassportText} >
-                            <label class={PassportText}><span>Back To Passport Services</span></label></a>
+                        <a href="https://www.coralgables.com/department/passport-acceptance-facility/passport-services" className={PassportText} >
+                            <label className={PassportText}><span>Back To Passport Services</span></label></a>
                     </div>
                 </div>
             </div>
