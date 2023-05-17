@@ -31,8 +31,8 @@ function SearchAndEditEntry() {
                     header="whiteHeader" headerContent="whiteHeaderContent"
                     cityLogo="whiteCityLogo" PassportText="whitePassportText"
                 />
-                <div class="subHeader">
-                    <label class="subHeaderText">Search And Edit Entries</label>
+                <div className="subHeader">
+                    <label className="subHeaderText">Search And Edit Entries</label>
                 </div>
                 <EntryFetch
                     checkedID={checkedID}
