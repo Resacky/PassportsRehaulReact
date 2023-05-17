@@ -10,6 +10,8 @@ const StateDepartment = ({
     totalPrice, setTotalPrice
 }) => {
 
+    const defaultValue = useState(0);
+
     /* This is used to communicate with the controller ASP.NET Core API to retrieve back the JSON of the SQL DB in question, any changes should reflect ASAP */
     useEffect(() => {
         const fetchData = async () => {
@@ -53,8 +55,8 @@ const StateDepartment = ({
                 <div className="AddedReturnServices">
                     <label>Added Return Services</label>
                     <div>
-                        <select id="recordSelect" value={selectedPassportARSSD} onChange={handleSelectionChange}>
-                            <option value="">-- Please choose an option --</option>
+                        <select id="recordSelect" onChange={handleSelectionChange}>
+                            <option value={defaultValue} >-- Please choose an option --</option>
                             {passportARSSD.map((record) => (
                                 <option key={record.arsDescription} value={record.arsFee}>
                                     {record.arsDescription}

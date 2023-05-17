@@ -81,12 +81,6 @@ function AddEntry() {
             setErrorHandlingMessage('Passport Selection box is not populated');
             return;
         }
-        /* ARS selection box check */
-        if (selectedPassportARSSD == null || selectedPassportARSSD == '') {
-            setErrorHandling(true);
-            setErrorHandlingMessage('Added Return Services box is not populated');
-            return;
-        }
         /* data clean up of the date creation, and if it passes all user error cases then it will create a timestamp */
         let formattedDateCreated = null;
         let dateCreated = new Date();
@@ -192,6 +186,7 @@ function AddEntry() {
                                         passportPrice={passportPrice}
                                         totalPrice={totalPrice} setTotalPrice={setTotalPrice}
                                     />
+                                    
                                 </div>
                             </div>
                             <div className="submitButtonDiv">
