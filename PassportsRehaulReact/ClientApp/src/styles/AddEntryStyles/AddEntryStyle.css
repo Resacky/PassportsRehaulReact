@@ -59,13 +59,35 @@
     gap: 1vh;
 }
 
-.submitButtonDiv{
+.totalValidation {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    gap: 10px; /* Adjust this to add some space between the rows */
+    margin: auto;
+}
+
+.priceValLabel {
+    grid-column: 1 / span 2; /* This makes the label span both columns */
+}
+
+.priceValDollarSign {
+    grid-row: 2; /* This puts the dollar sign on the second row */
+    grid-column: 1; /* This puts the dollar sign in the first column */
+}
+
+.ValUserInput {
+    grid-row: 2; /* This puts the input field on the second row */
+    grid-column: 2; /* This puts the input field in the second column */
+    width: 5vw;
+}
+.submitButtonDiv {
     display: flex;
     justify-content: center;
     width: auto;
-    margin-bottom: 1vh;
+    margin: 2vh;
 }
 
 .submitButton {
-
 }

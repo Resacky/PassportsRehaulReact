@@ -28,6 +28,8 @@ function AddEntry() {
     const [selectedPassportARSSD, setSelectedPassportARSSD] = useState();
     const [totalPrice, setTotalPrice] = useState();
 
+    const [totalValidation, setTotalValidation] = useState('');
+
     const [errorHandling, setErrorHandling] = useState(false);
     const [errorHandlingMessage, setErrorHandlingMessage] = useState('');
 
@@ -81,6 +83,14 @@ function AddEntry() {
             setErrorHandlingMessage('Passport Selection box is not populated');
             return;
         }
+
+        /* Total validation check */
+        if (totalPrice !== parseFloat(totalValidation)) {
+            setErrorHandling(true);
+            setErrorHandlingMessage('Total and validation field are different');
+            return;
+        }
+
         /* data clean up of the date creation, and if it passes all user error cases then it will create a timestamp */
         let formattedDateCreated = null;
         let dateCreated = new Date();
@@ -186,7 +196,16 @@ function AddEntry() {
                                         passportPrice={passportPrice}
                                         totalPrice={totalPrice} setTotalPrice={setTotalPrice}
                                     />
-                                    
+
+                                    <div className="totalValidation">
+                                        <label className="priceValLabel">Total Price Validation:</label>
+                                        <label className="priceValDollarSign">$</label>
+                                        <input className="ValUserInput"
+                                            type="number"
+                                            value={totalValidation}
+                                            onChange={e => setTotalValidation(e.target.value)}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div className="submitButtonDiv">
