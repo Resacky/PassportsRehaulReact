@@ -26,6 +26,13 @@ const EntryFetch = ({
         setCheckedStatus(event.target.checked);
     }
 
+    const handlePageChange = (event) => {
+        const pageNumber = Number(event.target.value);
+        if (pageNumber) {
+            setPage(pageNumber);
+        }
+    }
+
     return (
         <div>
             <h2 className="header">Entry Database</h2>
@@ -67,6 +74,7 @@ const EntryFetch = ({
             </table>
             <div className="pagination-buttons">
                 <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+                <input type="number" value={page} onChange={handlePageChange} min={1} />
                 <button onClick={() => setPage(page + 1)}>Next</button>
             </div>
         </div>
