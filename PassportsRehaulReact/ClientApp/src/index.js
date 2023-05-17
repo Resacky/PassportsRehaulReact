@@ -17,8 +17,7 @@ root.render(
     <>
         <Router>
             <Routes>
-                <Route path="/" element={<Navigate from="/" to="/Home" />} />
-                <Route path="/Home" element={<Home />} />
+                <Route path="/" element={<Navigate from="/" to="/AddEntry" />} />
                 <Route path="/AddEntry" element={<AddEntry />} />
                 <Route path="/SearchAndEditEntry" element={<SearchAndEditEntry />} />
                 <Route path="/SelectReporting" element={<SelectAReport />} />
