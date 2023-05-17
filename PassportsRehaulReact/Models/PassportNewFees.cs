@@ -7,8 +7,6 @@ namespace PassportsRehaulReact.Models
 {
     public class PassportNewFees
     {
-        public int? PPFEEID { get; set; }
-
         [Key]
         public int? Sort { get; set; }
 

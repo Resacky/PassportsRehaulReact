@@ -30,14 +30,8 @@ namespace PassportsRehaulReact.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ENTRYID"), 1L, 1);
 
-                    b.Property<decimal?>("ARSCG")
-                        .HasColumnType("money");
-
-                    b.Property<double?>("ARSSD")
-                        .HasColumnType("float");
-
-                    b.Property<bool?>("AmendedPass")
-                        .HasColumnType("bit");
+                    b.Property<decimal?>("ARSSD")
+                        .HasColumnType("decimal");
 
                     b.Property<string>("AppFirst")
                         .HasColumnType("char");
@@ -60,47 +54,17 @@ namespace PassportsRehaulReact.Migrations
                     b.Property<DateTime?>("DOB")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime?>("Departure")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("LBoxDescription")
                         .HasColumnType("char");
 
-                    b.Property<bool?>("NoFeePass")
-                        .HasColumnType("bit");
-
                     b.Property<decimal?>("PassPortFee")
-                        .HasColumnType("money");
-
-                    b.Property<decimal?>("PassPortFeeCG")
                         .HasColumnType("money");
 
                     b.Property<string>("Phone")
                         .HasColumnType("char");
 
-                    b.Property<double?>("PhotosFee")
-                        .HasColumnType("float");
-
-                    b.Property<bool?>("RegularPass")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nchar");
-
-                    b.Property<string>("amended")
-                        .HasColumnType("char(1)");
-
-                    b.Property<double?>("cash")
-                        .HasColumnType("float");
-
-                    b.Property<string>("nofee")
-                        .HasColumnType("char(1)");
-
-                    b.Property<string>("regular")
-                        .HasColumnType("char(1)");
-
-                    b.Property<double?>("total")
-                        .HasColumnType("float");
+                    b.Property<decimal?>("total")
+                        .HasColumnType("decimal");
 
                     b.HasKey("ENTRYID");
 
