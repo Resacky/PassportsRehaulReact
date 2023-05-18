@@ -135,15 +135,15 @@ const EntryEdit = ({
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="text2" name="appFirst" value={editedEntry.appFirst} onChange={handleChange} /></td>
-                            <td><input type="text2" name="appMiddle" value={editedEntry.appMiddle} onChange={handleChange} /></td>
-                            <td><input type="text2" name="appLast" value={editedEntry.appLast} onChange={handleChange} /></td>
+                            <td><input type="text" name="appFirst" value={editedEntry.appFirst} onChange={handleChange} /></td>
+                            <td><input type="text" name="appMiddle" value={editedEntry.appMiddle} onChange={handleChange} /></td>
+                            <td><input type="text" name="appLast" value={editedEntry.appLast} onChange={handleChange} /></td>
                             <td><input type="date" name="dob" value={editedEntry.dob} onChange={handleChange} /></td>
-                            <td><input type="text2" name="phone" value={phoneDisplay} onChange={handleChange} /></td>
-                            <td><input type="text2" name="lBoxDescription" value={editedEntry.lBoxDescription} onChange={handleChange} /></td>
-                            <td><input type="text2" name="passPortFee" value={editedEntry.passPortFee} onChange={handleChange} /></td>
-                            <td><input type="text2" name="arssd" value={editedEntry.arssd} onChange={handleChange} /></td>
-                            <td><input type="text2" name="total" value={editedEntry.total} onChange={handleChange} /></td>
+                            <td><input type="text" name="phone" value={phoneDisplay} onChange={handleChange} /></td>
+                            <td><input type="text" name="lBoxDescription" value={editedEntry.lBoxDescription} onChange={handleChange} /></td>
+                            <td><input type="text" name="passPortFee" value={editedEntry.passPortFee} onChange={handleChange} /></td>
+                            <td><input type="text" name="arssd" value={editedEntry.arssd} onChange={handleChange} /></td>
+                            <td><input type="text" name="total" value={editedEntry.total} onChange={handleChange} /></td>
                         </tr>
                     </tbody>
                 </table>

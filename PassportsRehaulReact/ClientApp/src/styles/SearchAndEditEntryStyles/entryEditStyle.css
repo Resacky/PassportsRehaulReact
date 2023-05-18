@@ -30,15 +30,6 @@ th {
     color: white;
 }
 
-input[type="text2"] {
-    width: 100%; /* Set input fields width */
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-}
-
 .editSubmitDiv {
     display: flex;
     justify-content: center;
