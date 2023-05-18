@@ -26,7 +26,7 @@ let TypeOfPassportBox = ({
     }, []);
 
     useEffect(() => {
-        if (selectedLockBoxRecords == 5) {
+        if (selectedLockBoxRecords === 'LockBox Number 3 (DS-5504)') {
             setPassportPrice(0);
         } else if (selectedPassportRecords) {
             findCorrespondingValue(selectedPassportRecords);
@@ -34,14 +34,14 @@ let TypeOfPassportBox = ({
     }, [selectedLockBoxRecords]);
 
     useEffect(() => {
-        if (selectedPassportRecords && selectedLockBoxRecords != 5) {  // If a record is already selected
+        if (selectedPassportRecords && selectedLockBoxRecords !== 'LockBox Number 3 (DS-5504)') {  // If a record is already selected
             findCorrespondingValue(selectedPassportRecords);  // Recalculate the price
         }
     }, [dateOfBirth]);  // Run this effect whenever dateOfBirth changes
 
     const handleSelectionChange = (e) => {
         setSelectedPassportRecords(e.target.value);
-        if (selectedLockBoxRecords != 5) { // Add this line
+        if (selectedLockBoxRecords !== 'LockBox Number 3 (DS-5504)') { // Add this line
             findCorrespondingValue(e.target.value);
         }
     };

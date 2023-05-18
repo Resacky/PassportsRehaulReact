@@ -18,7 +18,7 @@ function AddEntry() {
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const [lockBoxRecords, setLockBoxRecords] = useState([]);
-    const [selectedLockBoxRecords, setSelectedLockBoxRecords] = useState();
+    const [selectedLockBoxRecords, setSelectedLockBoxRecords] = useState('');
 
     const [passportRecords, setPassportRecords] = useState([]);
     const [selectedPassportRecords, setSelectedPassportRecords] = useState();
@@ -78,7 +78,7 @@ function AddEntry() {
             return;
         }
         /* Passport Selection box check */
-        if (selectedLockBoxRecords != 5  && (selectedPassportRecords == null || selectedPassportRecords == '')) {
+        if (selectedLockBoxRecords != 'LockBox Number 3 (DS-5504)'  && (selectedPassportRecords == null || selectedPassportRecords == '')) {
             setErrorHandling(true);
             setErrorHandlingMessage('Passport Selection box is not populated');
             return;

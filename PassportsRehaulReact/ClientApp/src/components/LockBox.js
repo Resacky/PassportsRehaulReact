@@ -22,7 +22,7 @@ const LockBoxDropdownMenu = ({
     }, []);
 
     const handleSelectionChange = (e) => {
-        setSelectedRecord(e.target.value);
+        setSelectedRecord(e.target.value.trim());
     };
 
     return (
@@ -30,11 +30,14 @@ const LockBoxDropdownMenu = ({
             <label htmlFor="recordSelect">Lock Box:</label>
             <select id="recordSelect" value={selectedRecord} onChange={handleSelectionChange}>
                 <option value="">-- Please choose an option --</option>
-                {records.map((record) => (
-                    <option key={record.lockboxid} value={record.lockboxid}>
-                        {record.lBoxDescription}
-                    </option>
-                ))}
+                {records.map((record) => {
+                    const trimmedDescription = record.lBoxDescription.trim();
+                    return (
+                        <option key={record.lockboxid} value={trimmedDescription}>
+                            {trimmedDescription}
+                        </option>
+                    );
+                })}
             </select>
         </div>
     );
