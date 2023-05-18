@@ -63,6 +63,7 @@ function SearchAndEditEntry() {
                     checkedID={checkedID}
                     setCheckedID={setCheckedID}
                     setCheckedStatus={setCheckedStatus}
+                    refreshToggle={refreshToggle}
                 />
                 <OptionsBox
                     isOpen={checkedStatus}
