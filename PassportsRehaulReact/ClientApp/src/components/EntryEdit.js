@@ -23,6 +23,17 @@ const EntryEdit = ({
         checkSD: '',
     });
     const [originalEntry, setOriginalEntry] = useState({});
+    const [phoneDisplay, setPhoneDisplay] = useState('');
+
+    const formatPhoneNumber = (phoneNum) => {
+        if (phoneNum.length >= 3 && phoneNum.length < 6) {
+            return `(${phoneNum.slice(0, 3)})${phoneNum.slice(3)}`;
+        } else if (phoneNum.length >= 6) {
+            return `(${phoneNum.slice(0, 3)})${phoneNum.slice(3, 6)}-${phoneNum.slice(6)}`;
+        } else {
+            return phoneNum;
+        }
+    }
 
     // Fetch data on checkedID change
     useEffect(() => {
@@ -44,6 +55,11 @@ const EntryEdit = ({
                     data.dob = format(parsedDate, "yyyy-MM-dd"); // Use "yyyy-MM-dd" for HTML date input
                 }
 
+                // Format phone for display
+                if (data.phone) {
+                    setPhoneDisplay(formatPhoneNumber(data.phone));
+                }
+
                 setOriginalEntry(data);
                 setEditedEntry(data);
             } catch (error) {
@@ -56,11 +72,35 @@ const EntryEdit = ({
     }, [checkedID]);
 
     const handleChange = (event) => {
-        let value = event.target.value;
-        setEditedEntry({
-            ...editedEntry,
-            [event.target.name]: value.trim()
-        });
+        let { name, value } = event.target;
+
+        if (name === 'phone') {
+            // Remove non-digit characters for submission
+            let rawValue = value.replace(/\D/g, '');
+
+            // Limit to 10 digits
+            rawValue = rawValue.slice(0, 10);
+
+            // Update the actual phone number for submission
+            setEditedEntry({
+                ...editedEntry,
+                [name]: rawValue
+            });
+
+            // Add brackets and hyphen for display
+            if (rawValue.length >= 3 && rawValue.length < 6) {
+                value = `(${rawValue.slice(0, 3)})${rawValue.slice(3)}`;
+            } else if (rawValue.length >= 6) {
+                value = `(${rawValue.slice(0, 3)})${rawValue.slice(3, 6)}-${rawValue.slice(6)}`;
+            }
+            // Update the display phone number
+            setPhoneDisplay(value);
+        } else {
+            setEditedEntry({
+                ...editedEntry,
+                [name]: value.trim()
+            });
+        }
     }
 
     const handleSubmit = async (event) => {
@@ -68,7 +108,6 @@ const EntryEdit = ({
         try {
             await axios.put(`https://localhost:7243/api/entrybackup2/${checkedID}`, editedEntry);
             setEditSuccessMessageOpen(true); // set this to true after successful PUT request
-            setCheckedID(null);  // Reset selection after successful PUT request
             setEditOpen(false);
         } catch (error) {
             console.error('Error updating entry:', error);
@@ -100,7 +139,7 @@ const EntryEdit = ({
                             <td><input type="text2" name="appMiddle" value={editedEntry.appMiddle} onChange={handleChange} /></td>
                             <td><input type="text2" name="appLast" value={editedEntry.appLast} onChange={handleChange} /></td>
                             <td><input type="date" name="dob" value={editedEntry.dob} onChange={handleChange} /></td>
-                            <td><input type="text2" name="phone" value={editedEntry.phone} onChange={handleChange} /></td>
+                            <td><input type="text2" name="phone" value={phoneDisplay} onChange={handleChange} /></td>
                             <td><input type="text2" name="lBoxDescription" value={editedEntry.lBoxDescription} onChange={handleChange} /></td>
                             <td><input type="text2" name="passPortFee" value={editedEntry.passPortFee} onChange={handleChange} /></td>
                             <td><input type="text2" name="arssd" value={editedEntry.arssd} onChange={handleChange} /></td>
