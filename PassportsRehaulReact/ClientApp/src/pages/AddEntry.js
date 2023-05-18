@@ -78,7 +78,7 @@ function AddEntry() {
             return;
         }
         /* Passport Selection box check */
-        if (selectedPassportRecords == null || selectedPassportRecords == '') {
+        if (selectedLockBoxRecords != 5  && (selectedPassportRecords == null || selectedPassportRecords == '')) {
             setErrorHandling(true);
             setErrorHandlingMessage('Passport Selection box is not populated');
             return;
@@ -145,14 +145,6 @@ function AddEntry() {
             .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
     };
-
-    useEffect(() => {
-        console.log(passportPrice);
-    }, [passportPrice]);
-
-    useEffect(() => {
-        console.log(selectedLockBoxRecords);
-    }, [selectedLockBoxRecords]);
 
     return (
         <>
