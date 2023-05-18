@@ -87,7 +87,7 @@ let TypeOfPassportBox = ({
         } else {
             /* have this set the variable $0.00 for debugging purposes */
             setPassportPrice(0);
-            console.log(`No record found with sort value: ${sort}`);
+            //console.log(`No record found with sort value: ${sort}`);
         }
     };
 
