@@ -7,7 +7,7 @@ import '../styles/AddEntryStyles/TypeOfPassportBoxStyle.css';
 let TypeOfPassportBox = ({
     passportRecords, setPassportRecords,
     selectedPassportRecords, setSelectedPassportRecords,
-    dateOfBirth,
+    dateOfBirth, selectedLockBoxRecords,
     passportPrice, setPassportPrice
 }) => {
 
@@ -26,15 +26,25 @@ let TypeOfPassportBox = ({
     }, []);
 
     useEffect(() => {
-        if (selectedPassportRecords) {  // If a record is already selected
+        if (selectedPassportRecords && selectedLockBoxRecords != 5) {  // If a record is already selected
             findCorrespondingValue(selectedPassportRecords);  // Recalculate the price
         }
     }, [dateOfBirth]);  // Run this effect whenever dateOfBirth changes
 
     const handleSelectionChange = (e) => {
-        setSelectedPassportRecords(e.target.value);
-        findCorrespondingValue(e.target.value);
+        if (selectedLockBoxRecords != 5) { // Add this line
+            setSelectedPassportRecords(e.target.value);
+            findCorrespondingValue(e.target.value);
+        }
     };
+
+    useEffect(() => {
+        if (selectedLockBoxRecords == 5) {
+            setPassportPrice(0);
+        } else if (selectedPassportRecords) {
+            findCorrespondingValue(selectedPassportRecords);
+        }
+    }, [selectedLockBoxRecords]);
 
     /* function for the logic of establishing how old the individual is relative to the 16 year old threshold */
     function isAdult(dateOfBirth) {

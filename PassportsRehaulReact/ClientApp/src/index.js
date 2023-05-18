@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-ro
 /* list of pages */
 import AddEntry from './pages/AddEntry';
 import SearchAndEditEntry from './pages/SearchAndEditEntry';
-import SelectAReport from './pages/SelectAReport';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);

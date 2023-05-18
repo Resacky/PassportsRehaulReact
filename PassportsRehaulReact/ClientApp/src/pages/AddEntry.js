@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import ApplicantInformation from "../components/ApplicantInformation";
 import LockBoxDropdownMenu from "../components/LockBox";
 import TypeOfPassportBox from "../components/TypeOfPassportBox";
@@ -138,12 +138,21 @@ function AddEntry() {
                     setSelectedLockBoxRecords('');
                     setSelectedPassportRecords('');
                     setSelectedPassportARSSD(0);
+                    setTotalValidation('');
                 }
                 return response.json();
             })
             .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
     };
+
+    useEffect(() => {
+        console.log(passportPrice);
+    }, [passportPrice]);
+
+    useEffect(() => {
+        console.log(selectedLockBoxRecords);
+    }, [selectedLockBoxRecords]);
 
     return (
         <>
@@ -175,7 +184,7 @@ function AddEntry() {
                                     <TypeOfPassportBox
                                         passportRecords={passportRecords} setPassportRecords={setPassportRecords}
                                         selectedPassportRecords={selectedPassportRecords} setSelectedPassportRecords={setSelectedPassportRecords}
-                                        dateOfBirth={dateOfBirth}
+                                        dateOfBirth={dateOfBirth} selectedLockBoxRecords={selectedLockBoxRecords}
                                         passportPrice={passportPrice} setPassportPrice={setPassportPrice}
                                     />
 

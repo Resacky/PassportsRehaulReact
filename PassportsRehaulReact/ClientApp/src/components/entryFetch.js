@@ -1,5 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 import '../styles/SearchAndEditEntryStyles/entryFetchStyle.css';
 
@@ -54,22 +55,29 @@ const EntryFetch = ({
                     </tr>
                 </thead>
                 <tbody>
-                    {entryData.map(item => (
-                        <tr key={item.entryid}>
-                            <td><input type="checkbox" name={item.entryid} checked={checkedID === item.entryid} onChange={handleChange} /></td>
-                            <td>{item.entryid}</td>
-                            <td>{item.created}</td>
-                            <td>{item.appFirst}</td>
-                            <td>{item.appMiddle}</td>
-                            <td>{item.appLast}</td>
-                            <td>{item.dob}</td>
-                            <td>{item.phone}</td>
-                            <td>{item.lBoxDescription}</td>
-                            <td>${item.passPortFee}</td>
-                            <td>${item.arssd || 0}</td>
-                            <td>${item.total || 0}</td>
-                        </tr>
-                    ))}
+                    {entryData.map(item => {
+                        let createdDate = moment.utc(item.created).local();
+                        let formattedCreated = createdDate.format('MM/DD/YYYY, h:mm:ss A');
+
+                        let dob = moment.utc(item.dob).local();
+                        let formattedDob = dob.format('MM/DD/YYYY');
+                        return (
+                            <tr key={item.entryid}>
+                                <td><input type="checkbox" name={item.entryid} checked={checkedID === item.entryid} onChange={handleChange} /></td>
+                                <td>{item.entryid}</td>
+                                <td>{formattedCreated}</td>
+                                <td>{item.appFirst}</td>
+                                <td>{item.appMiddle}</td>
+                                <td>{item.appLast}</td>
+                                <td>{formattedDob}</td>
+                                <td>{item.phone}</td>
+                                <td>{item.lBoxDescription}</td>
+                                <td>${item.passPortFee}</td>
+                                <td>${item.arssd || 0}</td>
+                                <td>${item.total || 0}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
             <div className="pagination-buttons">

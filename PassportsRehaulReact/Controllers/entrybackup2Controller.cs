@@ -48,6 +48,7 @@ namespace PassportsRehaulReact.Controllers
         //}
 
         // GET: api/entrybackup2/recent?page=1&size=20
+        /* this GET request is modified to derive the whole table but in chunks of 20 in increments of a single query at a time */
         [HttpGet("recent")]
         public async Task<ActionResult<IEnumerable<entrybackup2>>> GetRecententrybackup2([FromQuery] int page = 1, [FromQuery] int size = 20)
         {
