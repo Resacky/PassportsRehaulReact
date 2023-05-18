@@ -59,7 +59,7 @@ const EntryFetch = ({
                         let createdDate = moment.utc(item.created).local();
                         let formattedCreated = createdDate.format('MM/DD/YYYY, h:mm:ss A');
 
-                        let dob = moment.utc(item.dob).local();
+                        let dob = moment(item.dob);
                         let formattedDob = dob.format('MM/DD/YYYY');
                         return (
                             <tr key={item.entryid}>

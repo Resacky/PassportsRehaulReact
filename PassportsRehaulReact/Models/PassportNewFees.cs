@@ -17,6 +17,6 @@ namespace PassportsRehaulReact.Models
         public decimal? adult { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string FeeDescription { get; set; }
+        public string? FeeDescription { get; set; }
     }
 }

@@ -1,7 +1,10 @@
 ﻿import React, { useState } from 'react';
+import axios from 'axios';
 import Banner from '../components/Banner';
 import EntryFetch from '../components/entryFetch';
+import EntryEdit from '../components/EntryEdit';
 import OptionsBox from '../components/optionsBox';
+import MessageBox from '../components/MessageBox';
 
 import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
 
@@ -10,19 +13,34 @@ function SearchAndEditEntry() {
     const [checkedID, setCheckedID] = useState();
     const [checkedStatus, setCheckedStatus] = useState(false);
 
+    const [editOpen, setEditOpen] = useState(false);
+    const [editSuccessMessageOpen, setEditSuccessMessageOpen] = useState(false);
+
+    const [messageOpen, setMessageOpen] = useState(false);
+    const [message, setMessage] = useState('');
+
     const handleCloseOption = () => {
         setCheckedStatus(false);
     }
 
     const handleEditOption = () => {
-        // your edit logic here
-        console.log("Editing entry with ID: ", checkedID);
+        handleCloseOption();
+        setEditOpen(true);
     }
 
-    const handleDeleteOption = () => {
-        // your delete logic here
-        console.log("Deleting entry with ID: ", checkedID);
-    }
+    const handleDeleteOption = async () => {
+        try {
+            const response = await axios.delete(`https://localhost:7243/api/entrybackup2/${checkedID}`);
+            console.log(response);
+            console.log("Successfully deleted entry with ID: ", checkedID);
+            setCheckedID(null);  // Reset checkedID after deletion
+        } catch (error) {
+            console.error("Error deleting entry: ", error);
+        }
+        handleCloseOption();
+        setMessage('Successfully deleted entry with ID: ' + checkedID);
+        setMessageOpen(true);
+    };
 
     return (
         <>
@@ -47,6 +65,28 @@ function SearchAndEditEntry() {
                 >
                     <h2>{checkedID}</h2>
                 </OptionsBox>
+                <MessageBox
+                    isOpen={editOpen}
+                    onClose={() => setEditOpen(false)}
+                >
+                    <div className="EditEntryDiv">
+                        <EntryEdit
+                            checkedID={checkedID} setCheckedID={setCheckedID} setEditOpen={setEditOpen} setEditSuccessMessageOpen={setEditSuccessMessageOpen}
+                        />
+                    </div>
+                </MessageBox>
+                <MessageBox
+                    isOpen={messageOpen}
+                    onClose={() => setMessageOpen(false)}
+                >
+                    <p>{message}</p>
+                </MessageBox>
+                <MessageBox
+                    isOpen={editSuccessMessageOpen}
+                    onClose={() => setEditSuccessMessageOpen(false)}
+                >
+                    <p>Edit on record {checkedID} successful</p>
+                </MessageBox>
             </div>
         </>
     );

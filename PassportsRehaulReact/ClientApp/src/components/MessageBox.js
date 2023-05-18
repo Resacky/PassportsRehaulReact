@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import '../styles/ErrorHandlingStyle.css';
+import '../styles/MessageBoxStyle.css';
 
 const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) {
