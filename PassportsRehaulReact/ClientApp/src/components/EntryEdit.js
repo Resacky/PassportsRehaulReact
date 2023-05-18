@@ -5,7 +5,7 @@ import { format, parseISO } from 'date-fns'; // Import date-fns functions
 import '../styles/SearchAndEditEntryStyles/entryEditStyle.css';
 
 const EntryEdit = ({
-    checkedID, setCheckedID, setEditOpen, setEditSuccessMessageOpen
+    checkedID, setCheckedID, setEditOpen, setEditSuccessMessageOpen, refreshData
 }) => {
     const [editedEntry, setEditedEntry] = useState({
         EntryID: '',
@@ -109,6 +109,7 @@ const EntryEdit = ({
             await axios.put(`https://localhost:7243/api/entrybackup2/${checkedID}`, editedEntry);
             setEditSuccessMessageOpen(true); // set this to true after successful PUT request
             setEditOpen(false);
+            refreshData(); // Refresh data after edit
         } catch (error) {
             console.error('Error updating entry:', error);
         }

@@ -19,6 +19,12 @@ function SearchAndEditEntry() {
     const [messageOpen, setMessageOpen] = useState(false);
     const [message, setMessage] = useState('');
 
+    const [refreshToggle, setRefreshToggle] = useState(false);
+
+    const toggleRefresh = () => {
+        setRefreshToggle(!refreshToggle);
+    };
+
     const handleCloseOption = () => {
         setCheckedStatus(false);
     }
@@ -34,6 +40,7 @@ function SearchAndEditEntry() {
             console.log(response);
             console.log("Successfully deleted entry with ID: ", checkedID);
             setCheckedID(null);  // Reset checkedID after deletion
+            toggleRefresh(); // Refresh data after deletion
         } catch (error) {
             console.error("Error deleting entry: ", error);
         }
@@ -71,7 +78,11 @@ function SearchAndEditEntry() {
                 >
                     <div className="EditEntryDiv">
                         <EntryEdit
-                            checkedID={checkedID} setCheckedID={setCheckedID} setEditOpen={setEditOpen} setEditSuccessMessageOpen={setEditSuccessMessageOpen}
+                            checkedID={checkedID}
+                            setCheckedID={setCheckedID}
+                            setEditOpen={setEditOpen}
+                            setEditSuccessMessageOpen={setEditSuccessMessageOpen}
+                            refreshData={toggleRefresh}
                         />
                     </div>
                 </MessageBox>

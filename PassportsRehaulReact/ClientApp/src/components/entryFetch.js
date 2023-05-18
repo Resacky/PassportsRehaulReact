@@ -5,7 +5,7 @@ import moment from 'moment';
 import '../styles/SearchAndEditEntryStyles/entryFetchStyle.css';
 
 const EntryFetch = ({
-    checkedID, setCheckedID, setCheckedStatus,
+    checkedID, setCheckedID, setCheckedStatus, refreshToggle,
 }) => {
     const [entryData, setEntryData] = useState([]);
     const [page, setPage] = useState(1);
@@ -20,7 +20,7 @@ const EntryFetch = ({
             }
         };
         fetchData();
-    }, [page]);
+    }, [page, refreshToggle]);
 
     const handleChange = (event) => {
         setCheckedID(event.target.name);
