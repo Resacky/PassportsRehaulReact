@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using PassportsRehaulReact.Data;
+using Microsoft.OpenApi.Models; // add this for Swagger
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-/* this is apparently important to connect to the SQL database */
 builder.Services.AddDbContext<PassportDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
 
 builder.Services.AddControllersWithViews();
@@ -27,7 +27,16 @@ builder.Services.AddAuthorization(options =>
 });
 
 /* adding CORS */
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
+// Add Swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -40,11 +49,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseAuthentication(); // Ensure you have this line to use authentication.
 
-/* activating CORS */
-app.UseCors(builder =>
-{
-    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-});
+app.UseCors("MyPolicy"); // Here you should refer to the policy by name
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -52,6 +57,16 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();  // And this line to use authorization.
+
+// Enable middleware to serve generated Swagger as a JSON endpoint.
+app.UseSwagger();
+
+// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+app.UseSwaggerUI(c =>
+{
+    string swaggerJsonBasePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? "." : "..";
+    c.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "Passport React API calls");
+});
 
 app.MapControllerRoute(
     name: "default",
