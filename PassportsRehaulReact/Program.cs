@@ -20,10 +20,6 @@ builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
 /* Adding Authorization */
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("BasePermissions", policy =>
-        policy.RequireRole("coralgables.local\\PassportWrite"));
-    options.AddPolicy("DeletePermissions", policy =>
-        policy.RequireRole("coralgables.local\\PassportDelete"));
 });
 
 /* adding CORS */
