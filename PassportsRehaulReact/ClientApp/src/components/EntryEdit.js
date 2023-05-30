@@ -1,12 +1,27 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { format, parseISO } from 'date-fns'; // Import date-fns functions
+import { format, parseISO } from 'date-fns'; 
 
 import '../styles/SearchAndEditEntryStyles/entryEditStyle.css';
 
 const EntryEdit = ({
     checkedID, setCheckedID, setEditOpen, setEditSuccessMessageOpen, refreshData
 }) => {
+
+    const [dropdownMenu, setDropdownMenu] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('https://localhost:7243/api/PassPortLockBoxes');
+                setDropdownMenu(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     const [editedEntry, setEditedEntry] = useState({
         EntryID: '',
         appFirst: '',
@@ -141,7 +156,17 @@ const EntryEdit = ({
                             <td><input type="text" name="appLast" value={editedEntry.appLast} onChange={handleChange} /></td>
                             <td><input type="date" name="dob" value={editedEntry.dob} onChange={handleChange} /></td>
                             <td><input type="text" name="phone" value={phoneDisplay} onChange={handleChange} /></td>
-                            <td><input type="text" name="lBoxDescription" value={editedEntry.lBoxDescription} onChange={handleChange} /></td>
+                            <td><select id="recordSelect" name="lBoxDescription" value={editedEntry.lBoxDescription} onChange={handleChange}>
+                                <option value="">-- Please choose an option --</option>
+                                {dropdownMenu.map((record) => {
+                                    const trimmedDescription = record.lBoxDescription.trim();
+                                    return (
+                                        <option key={record.lockboxid} value={trimmedDescription}>
+                                            {trimmedDescription}
+                                        </option>
+                                    );
+                                })}
+                            </select></td>
                             <td><input type="text" name="passPortFee" value={editedEntry.passPortFee} onChange={handleChange} /></td>
                             <td><input type="text" name="arssd" value={editedEntry.arssd} onChange={handleChange} /></td>
                             <td><input type="text" name="total" value={editedEntry.total} onChange={handleChange} /></td>
