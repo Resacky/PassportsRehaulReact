@@ -31,7 +31,7 @@ builder.Services.AddCors(options =>
 // Add Swagger
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "COCG Passport System API calls", Version = "v1" });
 });
 
 var app = builder.Build();
