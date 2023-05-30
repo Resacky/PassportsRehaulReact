@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react';
+import axios from '../components/axios.js';
 import ApplicantInformation from "../components/ApplicantInformation";
 import LockBoxDropdownMenu from "../components/LockBox";
 import TypeOfPassportBox from "../components/TypeOfPassportBox";
@@ -119,17 +120,13 @@ function AddEntry() {
         //console.log(parsedJSON);
 
         /* the actual POST request and parsing through all the JSON */
-        fetch('https://localhost:7243/api/entrybackup2', {
-            method: 'POST',
+        axios.post('api/entrybackup2', parsedJSON, {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: parsedJSON
         })
-            .then(response => {
-                /* check of successful POST request */
+            .then((response) => {
                 if (response.status === 201) {
-                    /* reset of all form fields */
                     setFirstName('');
                     setMiddleName('');
                     setLastName('');
@@ -140,10 +137,11 @@ function AddEntry() {
                     setSelectedPassportARSSD(0);
                     setTotalValidation('');
                 }
-                return response.json();
+                console.log(response.data);
             })
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     return (

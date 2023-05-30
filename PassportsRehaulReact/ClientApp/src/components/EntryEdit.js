@@ -1,5 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../components/axios.js';
 import { format, parseISO } from 'date-fns'; 
 
 import '../styles/SearchAndEditEntryStyles/entryEditStyle.css';
@@ -12,7 +12,7 @@ const EntryEdit = ({
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:7243/api/PassPortLockBoxes');
+                const response = await axios.get('api/PassPortLockBoxes');
                 setDropdownMenu(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -54,7 +54,7 @@ const EntryEdit = ({
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://localhost:7243/api/entrybackup2/${checkedID}`);
+                const response = await axios.get(`api/entrybackup2/${checkedID}`);
                 let data = response.data;
 
                 // Trim leading and trailing spaces
@@ -121,7 +121,7 @@ const EntryEdit = ({
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.put(`https://localhost:7243/api/entrybackup2/${checkedID}`, editedEntry);
+            await axios.put(`api/entrybackup2/${checkedID}`, editedEntry);
             setEditSuccessMessageOpen(true); // set this to true after successful PUT request
             setEditOpen(false);
             refreshData(); // Refresh data after edit

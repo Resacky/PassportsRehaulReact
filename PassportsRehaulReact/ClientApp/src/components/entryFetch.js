@@ -1,5 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../components/axios.js';
 import moment from 'moment';
 
 import '../styles/SearchAndEditEntryStyles/entryFetchStyle.css';
@@ -13,7 +13,7 @@ const EntryFetch = ({
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://localhost:7243/api/entrybackup2/recent?page=${page}&size=20`);
+                const response = await axios.get(`api/entrybackup2/recent?page=${page}&size=20`);
                 setEntryData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
