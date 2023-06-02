@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../components/axios.js';
 import Banner from '../components/Banner';
 import EntryFetch from '../components/entryFetch';
 import EntryEdit from '../components/EntryEdit';
@@ -36,7 +36,7 @@ function SearchAndEditEntry() {
 
     const handleDeleteOption = async () => {
         try {
-            const response = await axios.delete(`https://localhost:7243/api/entrybackup2/${checkedID}`);
+            const response = await axios.delete(`api/entrybackup2/${checkedID}`);
             console.log(response);
             console.log("Successfully deleted entry with ID: ", checkedID);
             setCheckedID(null);  // Reset checkedID after deletion

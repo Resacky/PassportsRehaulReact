@@ -1,5 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../components/axios.js';
 
 import '../styles/AddEntryStyles/LockBoxStyle.css';
 
@@ -11,7 +11,7 @@ const LockBoxDropdownMenu = ({
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:7243/api/PassPortLockBoxes');
+                const response = await axios.get('api/PassPortLockBoxes');
                 setRecords(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
