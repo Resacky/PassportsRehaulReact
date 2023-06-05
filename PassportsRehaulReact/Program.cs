@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using PassportsRehaulReact.Data;
 using Microsoft.OpenApi.Models; // add this for Swagger
+using Microsoft.AspNetCore.Server.IISIntegration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,13 +15,10 @@ builder.Services.AddDbContext<PassportDbContext>(options => options.UseSqlServer
 builder.Services.AddControllersWithViews();
 
 /* Adding Authentication */
-builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-    .AddNegotiate();
+builder.Services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
 /* Adding Authorization */
-builder.Services.AddAuthorization(options =>
-{
-});
+builder.Services.AddAuthorization();
 
 /* adding CORS */
 builder.Services.AddCors(options =>
