@@ -1,22 +1,28 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Principal;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
-namespace YourNamespace.Controllers
+namespace PassportsRehaulReact.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpGet("roles")]
-        public IActionResult GetUserRoles()
+        [HttpGet("groups")]
+        public IActionResult GetUserGroups()
         {
-            var roles = User.Claims
-                            .Where(c => c.Type == System.Security.Claims.ClaimTypes.Role)
-                            .Select(c => c.Value);
-
-            return Ok(roles);
+            var windowsIdentity = User.Identity as WindowsIdentity;
+            if (windowsIdentity != null)
+            {
+                var groups = windowsIdentity.Groups
+                    .Select(g => new SecurityIdentifier(g.Value).Translate(typeof(NTAccount)).ToString());
+                return Ok(groups);
+            }
+            else
+            {
+                return BadRequest("Windows Identity not found");
+            }
         }
     }
 }
