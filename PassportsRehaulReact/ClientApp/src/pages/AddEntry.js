@@ -12,6 +12,8 @@ import "../styles/AddEntryStyles/AddEntryStyle.css";
 function AddEntry() {
 
     /* variables for the form */
+    const [currentUser, setCurrentUser] = useState('');
+
     const [firstName, setFirstName] = useState('');
     const [middleName, setMiddleName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -33,6 +35,16 @@ function AddEntry() {
 
     const [errorHandling, setErrorHandling] = useState(false);
     const [errorHandlingMessage, setErrorHandlingMessage] = useState('');
+
+    useEffect(() => {
+        axios.get('/api/User/groups')
+            .then((response) => {
+                setCurrentUser(response.data.user);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -110,7 +122,7 @@ function AddEntry() {
             'passPortFee': passportPrice,
             'checkSD': totalPrice,
             'created': formattedDateCreated,
-            'createdBy': null,
+            'createdBy': currentUser,
             'total': totalPrice,
             'arssd': selectedPassportARSSD,
         };

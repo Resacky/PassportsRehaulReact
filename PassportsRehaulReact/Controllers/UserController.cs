@@ -10,6 +10,8 @@ namespace PassportsRehaulReact.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        //This is the API endpoint to get a user's Domain\User and windows group internally with the IIS server
+        //GET: /api/User/groups
         [HttpGet("groups")]
         public IActionResult GetUserGroups()
         {

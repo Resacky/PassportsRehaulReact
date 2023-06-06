@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import axios from '../components/axios.js';
 import Banner from '../components/Banner';
 import EntryFetch from '../components/entryFetch';
@@ -9,6 +9,17 @@ import MessageBox from '../components/MessageBox';
 import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
 
 function SearchAndEditEntry() {
+
+    const [isPassportDeleteGroup, setIsPassportDeleteGroup] = useState(false);
+    useEffect(() => {
+        axios.get('/api/User/groups')
+            .then((response) => {
+                setIsPassportDeleteGroup(response.data.groups.includes('CORALGABLES\\PassportDelete'));
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, []);
 
     const [checkedID, setCheckedID] = useState();
     const [checkedStatus, setCheckedStatus] = useState(false);
@@ -65,6 +76,7 @@ function SearchAndEditEntry() {
                     setCheckedStatus={setCheckedStatus}
                     refreshToggle={refreshToggle}
                 />
+
                 <OptionsBox
                     isOpen={checkedStatus}
                     onClose={handleCloseOption}
@@ -73,6 +85,7 @@ function SearchAndEditEntry() {
                 >
                     <h2>{checkedID}</h2>
                 </OptionsBox>
+
                 <MessageBox
                     isOpen={editOpen}
                     onClose={() => setEditOpen(false)}
