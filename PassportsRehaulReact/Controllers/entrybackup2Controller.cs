@@ -47,6 +47,46 @@ namespace PassportsRehaulReact.Controllers
         //        .ToListAsync();
         //}
 
+        // GET: /api/entrybackup2/search?appFirst=John&appLast=Doe&dob=yyyy-MM-dd&phone=1234567890&createdBy=admin&page=1
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<entrybackup2>>> Search([FromQuery] string appFirst = null, [FromQuery] string appLast = null, [FromQuery] DateTime? dob = null, [FromQuery] string phone = null, [FromQuery] string createdBy = null, [FromQuery] int page = 1, [FromQuery] int size = 20)
+        {
+            int skip = (page - 1) * size;
+
+            var query = _context.entrybackup2.AsQueryable();
+
+            if (!string.IsNullOrEmpty(appFirst))
+            {
+                query = query.Where(e => e.AppFirst.Contains(appFirst));
+            }
+
+            if (!string.IsNullOrEmpty(appLast))
+            {
+                query = query.Where(e => e.AppLast.Contains(appLast));
+            }
+
+            if (dob.HasValue)
+            {
+                query = query.Where(e => e.DOB == dob);
+            }
+
+            if (!string.IsNullOrEmpty(phone))
+            {
+                query = query.Where(e => e.Phone.Contains(phone));
+            }
+
+            if (!string.IsNullOrEmpty(createdBy))
+            {
+                query = query.Where(e => e.CreatedBy.Contains(createdBy));
+            }
+
+            return await query
+                .OrderByDescending(e => e.ENTRYID)
+                .Skip(skip)
+                .Take(size)
+                .ToListAsync();
+        }
+
         // GET: api/entrybackup2/recent?page=1&size=20
         /* this GET request is modified to derive the whole table but in chunks of 20 in increments of a single query at a time */
         [HttpGet("recent")]
