@@ -46,4 +46,12 @@ namespace PassportsRehaulReact.Models
         [Column(TypeName = "decimal")]
         public decimal? CheckSD { get; set; }
     }
+    public class SearchParameters
+    {
+        public string? AppFirst { get; set; }
+        public string? AppLast { get; set; }
+        public DateTime? DOB { get; set; }
+        public string? Phone { get; set; }
+        public string? CreatedBy { get; set; }
+    }
 }

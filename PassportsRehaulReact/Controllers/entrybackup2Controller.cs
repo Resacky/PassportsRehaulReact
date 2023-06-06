@@ -49,35 +49,35 @@ namespace PassportsRehaulReact.Controllers
 
         // GET: /api/entrybackup2/search?appFirst=John&appLast=Doe&dob=yyyy-MM-dd&phone=1234567890&createdBy=admin&page=1
         [HttpGet("search")]
-        public async Task<ActionResult<IEnumerable<entrybackup2>>> Search([FromQuery] string appFirst = null, [FromQuery] string appLast = null, [FromQuery] DateTime? dob = null, [FromQuery] string phone = null, [FromQuery] string createdBy = null, [FromQuery] int page = 1, [FromQuery] int size = 20)
+        public async Task<ActionResult<IEnumerable<entrybackup2>>> Search([FromQuery] SearchParameters parameters, [FromQuery] int page = 1, [FromQuery] int size = 20)
         {
             int skip = (page - 1) * size;
 
             var query = _context.entrybackup2.AsQueryable();
 
-            if (!string.IsNullOrEmpty(appFirst))
+            if (!string.IsNullOrEmpty(parameters.AppFirst))
             {
-                query = query.Where(e => e.AppFirst.Contains(appFirst));
+                query = query.Where(e => e.AppFirst.Contains(parameters.AppFirst));
             }
 
-            if (!string.IsNullOrEmpty(appLast))
+            if (!string.IsNullOrEmpty(parameters.AppLast))
             {
-                query = query.Where(e => e.AppLast.Contains(appLast));
+                query = query.Where(e => e.AppLast.Contains(parameters.AppLast));
             }
 
-            if (dob.HasValue)
+            if (parameters.DOB.HasValue)
             {
-                query = query.Where(e => e.DOB == dob);
+                query = query.Where(e => e.DOB == parameters.DOB);
             }
 
-            if (!string.IsNullOrEmpty(phone))
+            if (!string.IsNullOrEmpty(parameters.Phone))
             {
-                query = query.Where(e => e.Phone.Contains(phone));
+                query = query.Where(e => e.Phone.Contains(parameters.Phone));
             }
 
-            if (!string.IsNullOrEmpty(createdBy))
+            if (!string.IsNullOrEmpty(parameters.CreatedBy))
             {
-                query = query.Where(e => e.CreatedBy.Contains(createdBy));
+                query = query.Where(e => e.CreatedBy.Contains(parameters.CreatedBy));
             }
 
             return await query
