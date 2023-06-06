@@ -118,6 +118,7 @@ const EntryFetch = ({
                         <th>Passport Price</th>
                         <th>ARSSD</th>
                         <th>Total</th>
+                        <th>Created By</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -141,6 +142,7 @@ const EntryFetch = ({
                                 <td>${item.passPortFee}</td>
                                 <td>${item.arssd || 0}</td>
                                 <td>${item.total || 0}</td>
+                                <td>{item.createdBy}</td>
                             </tr>
                         )
                     })}
