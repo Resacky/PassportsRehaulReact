@@ -39,7 +39,6 @@ function AddEntry() {
     useEffect(() => {
         axios.get('/api/User/groups')
             .then((response) => {
-                console.log(response.data.user);
                 setCurrentUser(response.data.user);
             })
             .catch((error) => {
