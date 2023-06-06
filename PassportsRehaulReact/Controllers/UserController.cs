@@ -1,6 +1,7 @@
 ﻿using System.Security.Principal;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace PassportsRehaulReact.Controllers
 {
@@ -17,7 +18,12 @@ namespace PassportsRehaulReact.Controllers
             {
                 var groups = windowsIdentity.Groups
                     .Select(g => new SecurityIdentifier(g.Value).Translate(typeof(NTAccount)).ToString());
-                return Ok(groups);
+
+                return Ok(new
+                {
+                    User = windowsIdentity.Name,
+                    Groups = groups
+                });
             }
             else
             {
