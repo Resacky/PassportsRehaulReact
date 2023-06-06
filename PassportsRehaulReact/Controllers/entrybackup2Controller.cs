@@ -48,6 +48,8 @@ namespace PassportsRehaulReact.Controllers
         //}
 
         // GET: /api/entrybackup2/search?appFirst=John&appLast=Doe&dob=yyyy-MM-dd&phone=1234567890&createdBy=admin&page=1
+        // example GET URL request: /api/entrybackup2/search?appFirst=&appLast=&dob=&phone=&createdBy=&page=1&size=20
+        // insert any query test user wants after the variable = sign
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<entrybackup2>>> Search([FromQuery] SearchParameters parameters, [FromQuery] int page = 1, [FromQuery] int size = 20)
         {

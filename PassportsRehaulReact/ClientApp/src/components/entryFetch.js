@@ -8,19 +8,50 @@ const EntryFetch = ({
     checkedID, setCheckedID, setCheckedStatus, refreshToggle,
 }) => {
     const [entryData, setEntryData] = useState([]);
+    const [appFirst, setAppFirst] = useState('');
+    const [appLast, setappLast] = useState('');
+    const [dob, setDob] = useState('');
+    const [phone, setPhone] = useState('');
+    const [createdBy, setCreatedBy] = useState('');
     const [page, setPage] = useState(1);
+
+    const [searchParams, setSearchParams] = useState({
+        appFirst: '',
+        appLast: '',
+        dob: '',
+        phone: '',
+        createdBy: '',
+    });
+
+    const handleSearchChange = (event) => {
+        const { name, value } = event.target;
+        setSearchParams(prevParams => ({
+            ...prevParams,
+            [name]: value,
+        }));
+    };
+
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+        setAppFirst(searchParams.appFirst);
+        setappLast(searchParams.appLast);
+        setDob(searchParams.dob);
+        setPhone(searchParams.phone);
+        setCreatedBy(searchParams.createdBy);
+        setPage(1);  // reset page to 1 when a new search is made
+    };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`api/entrybackup2/recent?page=${page}&size=20`);
+                const response = await axios.get(`api/entrybackup2/search?appFirst=${appFirst}&appLast=${appLast}&dob=${dob}&phone=${phone}&createdBy=${createdBy}&page=${page}&size=20`);
                 setEntryData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchData();
-    }, [page, refreshToggle]);
+    }, [appFirst, appLast, dob, phone, createdBy, page, refreshToggle]);
 
     const handleChange = (event) => {
         setCheckedID(event.target.name);
@@ -37,6 +68,16 @@ const EntryFetch = ({
     return (
         <div>
             <h2 className="header">Entry Database</h2>
+
+            <form onSubmit={handleSearchSubmit} className="filterSearch">
+                <input className="filterElement" type="text" name="appFirst" value={searchParams.appFirst} onChange={handleSearchChange} placeholder="First Name" />
+                <input className="filterElement" type="text" name="appLast" value={searchParams.appLast} onChange={handleSearchChange} placeholder="Last Name" />
+                <input className="filterElement" type="date" name="dob" value={searchParams.dob} onChange={handleSearchChange} placeholder="DOB" />
+                <input className="filterElement" type="text" name="phone" value={searchParams.phone} onChange={handleSearchChange} placeholder="Phone" />
+                <input className="filterElement" type="text" name="createdBy" value={searchParams.createdBy} onChange={handleSearchChange} placeholder="Created By" />
+                <button className="filterElement" type="submit">Search</button>
+            </form>
+
             <table>
                 <thead>
                     <tr>

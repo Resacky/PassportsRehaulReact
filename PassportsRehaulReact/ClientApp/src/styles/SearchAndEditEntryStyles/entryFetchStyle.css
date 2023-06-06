@@ -29,3 +29,13 @@ th {
     gap: 1vh;
     margin: 1vh;
 }
+
+.filterSearch{
+    display: flex;
+    justify-content: center;
+    margin: 1vh;
+}
+
+.filterElement {
+    margin: 1vh;
+}
