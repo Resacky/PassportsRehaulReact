@@ -25,9 +25,20 @@ const EntryFetch = ({
 
     const handleSearchChange = (event) => {
         const { name, value } = event.target;
+        let newValue = value;
+        if (name === 'phone') {
+            // Remove all non-digit characters from the input
+            const digitsOnly = value.replace(/\D/g, '');
+
+            // If more than 10 digits, remove the extra
+            const trimmed = digitsOnly.slice(0, 10);
+
+            // Now format the remaining digits
+            newValue = formatPhoneNumber(trimmed);
+        }
         setSearchParams(prevParams => ({
             ...prevParams,
-            [name]: value,
+            [name]: newValue,
         }));
     };
 
@@ -36,7 +47,7 @@ const EntryFetch = ({
         setAppFirst(searchParams.appFirst);
         setappLast(searchParams.appLast);
         setDob(searchParams.dob);
-        setPhone(searchParams.phone);
+        setPhone(unformatPhoneNumber(searchParams.phone)); // Unformat here
         setCreatedBy(searchParams.createdBy);
         setPage(1);  // reset page to 1 when a new search is made
     };
@@ -64,6 +75,20 @@ const EntryFetch = ({
             setPage(pageNumber);
         }
     }
+
+    const formatPhoneNumber = (phoneNumberString) => {
+        const cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+        const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+        if (match) {
+            return '(' + match[1] + ')' + match[2] + '-' + match[3];
+        }
+        return phoneNumberString;
+    };
+
+    const unformatPhoneNumber = (formattedPhoneNumber) => {
+        const cleaned = ('' + formattedPhoneNumber).replace(/\D/g, '');
+        return cleaned;
+    };
 
     return (
         <div>
