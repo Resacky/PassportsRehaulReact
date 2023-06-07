@@ -11,7 +11,8 @@ function OtherPageLinks({ Links, ul, li, LinkStyle }) {
             <ul className={ul}>
                 <li className={li}><Link to="/AddEntry" className={LinkStyle}>Add Entry</Link></li>
                 <li className={li}><Link to="/SearchAndEditEntry" className={LinkStyle}>Search and Edit Entries</Link></li>
-                <li className={li}><a className={LinkStyle} href="http://sqlreports/Reports/Pages/Report.aspx?ItemPath=%2fCity+Clerk%27s+Office%2fPassport%2fv2+-+Passport+Application+Transmittal+(test+5-17-23)" target="_blank">Transmittal</a></li>
+                <li className={li}><a className={LinkStyle} href="http://sqlreports/Reports/Pages/Report.aspx?ItemPath=%2fCity+Clerk%27s+Office%2fPassport%2fv2+-+Passport+Application+Transmittal+(React.js+Version)" target="_blank">Transmittal (7)</a></li>
+                <li className={li}><a className={LinkStyle} href="http://sqlreports/Reports/Pages/Report.aspx?ItemPath=%2fCity+Clerk%27s+Office%2fPassport%2fv3+-+Passport+Application+Transmittal+(React.js+Version)" target="_blank">Transmittal (1)</a></li>
             </ul>
         </div>
     );
