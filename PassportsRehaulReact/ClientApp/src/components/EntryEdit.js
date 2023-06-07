@@ -144,8 +144,6 @@ const EntryEdit = ({
                             <th>Date of Birth</th>
                             <th>Phone</th>
                             <th>Box Description</th>
-                            <th>Passport Price</th>
-                            <th>ARSSD</th>
                             <th>Total</th>
                         </tr>
                     </thead>
@@ -167,8 +165,6 @@ const EntryEdit = ({
                                     );
                                 })}
                             </select></td>
-                            <td><input type="text" name="passPortFee" value={editedEntry.passPortFee} onChange={handleChange} /></td>
-                            <td><input type="text" name="arssd" value={editedEntry.arssd} onChange={handleChange} /></td>
                             <td><input type="text" name="total" value={editedEntry.total} onChange={handleChange} /></td>
                         </tr>
                     </tbody>
