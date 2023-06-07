@@ -83,6 +83,7 @@ function SearchAndEditEntry() {
                     onClose={handleCloseOption}
                     onEdit={handleEditOption}
                     onDelete={handleDeleteOption}
+                    isPassportDeleteGroup={isPassportDeleteGroup}
                 >
                     <h2>{checkedID}</h2>
                 </OptionsBox>
