@@ -13,8 +13,8 @@ const OptionsBox = ({
             <div className="modal-content" onClick={e => e.stopPropagation()}>
                 <div>{children}</div>
                 {
+                    /* this is to check the boolean if they have the PassportDelete group */
                     isPassportDeleteGroup ? (
-
                         <div className="buttons-container">
                             <button className="option-button" onClick={onEdit}>Edit</button>
                             <button className="option-button" onClick={onDelete}>Delete</button>

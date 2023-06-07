@@ -10,6 +10,7 @@ import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
 
 function SearchAndEditEntry() {
 
+    /* This uses an API Endpoint to check and see within the current users windows groupings if they have the specific PassportDelete group to be authorized to make edits/ and or /delete */
     const [isPassportDeleteGroup, setIsPassportDeleteGroup] = useState(false);
     useEffect(() => {
         axios.get('/api/User/groups')
