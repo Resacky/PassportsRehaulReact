@@ -211,6 +211,7 @@ function AddEntry() {
                                         <label className="priceValDollarSign">$</label>
                                         <input className="ValUserInput"
                                             type="number"
+                                            step="0.01"
                                             value={totalValidation}
                                             onChange={e => setTotalValidation(e.target.value)}
                                         />
