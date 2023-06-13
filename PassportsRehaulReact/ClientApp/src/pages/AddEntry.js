@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState, useRef } from 'react';
 import axios from '../components/axios.js';
 import ApplicantInformation from "../components/ApplicantInformation";
 import LockBoxDropdownMenu from "../components/LockBox";
@@ -14,6 +14,9 @@ function AddEntry() {
     /* variables for the form */
     const [currentUser, setCurrentUser] = useState('');
 
+    /* reference to the input element, after a form gets submitted */
+    const inputRef = useRef();
+
     const [firstName, setFirstName] = useState('');
     const [middleName, setMiddleName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -24,18 +27,19 @@ function AddEntry() {
     const [selectedLockBoxRecords, setSelectedLockBoxRecords] = useState('');
 
     const [passportRecords, setPassportRecords] = useState([]);
-    const [selectedPassportRecords, setSelectedPassportRecords] = useState();
-    let [passportPrice, setPassportPrice] = useState();
+    const [selectedPassportRecords, setSelectedPassportRecords] = useState('');
+    const [passportPrice, setPassportPrice] = useState('');
 
     const [passportARSSD, setPassportARSSD] = useState([]);
     const [selectedPassportARSSD, setSelectedPassportARSSD] = useState(0);
-    const [totalPrice, setTotalPrice] = useState();
+    const [totalPrice, setTotalPrice] = useState('');
 
     const [totalValidation, setTotalValidation] = useState('');
 
     const [errorHandling, setErrorHandling] = useState(false);
     const [errorHandlingMessage, setErrorHandlingMessage] = useState('');
 
+    /* this code is automatically executed when the page loads, and it retrieves the current windows user's list of window groups in JSON format */
     useEffect(() => {
         axios.get('/api/User/groups')
             .then((response) => {
@@ -46,6 +50,7 @@ function AddEntry() {
             });
     }, []);
 
+    /* this is the code that will get executed when the form is submitted */
     const handleSubmit = (event) => {
         event.preventDefault();
         /* this is necessary to clean up the data a little bit to have the SQL database recogize the formatting of the JSON to pass it into the POST request */
@@ -76,14 +81,11 @@ function AddEntry() {
             }
             console.error('There was an error within the data clean up of the date of birth', e);
         }
-        /* phone number check */
+        /* phone number check, if phone number is provided, it will clean it up before POST-ing to the SQL database */
         let cleanedPhoneNumber = null;
-        if (phoneNumber == '') {
-            setErrorHandling(true);
-            setErrorHandlingMessage('Phone number is not populated');
-            return;
+        if (phoneNumber != '') {
+            cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
         }
-        cleanedPhoneNumber = phoneNumber.replace(/[-() ]/g, "");
         /* Lockbox selection check */
         if (selectedLockBoxRecords == null || selectedLockBoxRecords == '') {
             setErrorHandling(true);
@@ -96,7 +98,6 @@ function AddEntry() {
             setErrorHandlingMessage('Passport Selection box is not populated');
             return;
         }
-
         /* Total validation check */
         if (totalPrice !== parseFloat(totalValidation)) {
             setErrorHandling(true);
@@ -109,8 +110,10 @@ function AddEntry() {
         let dateCreated = new Date();
         formattedDateCreated = dateCreated.toISOString();
         formattedDateCreated = formattedDateCreated.split('.')[0];
+
         /* for debugging, this should only be set off if all error use cases pass */
         console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}\nCreated By: ${currentUser}`);
+
         /* this is to create the JSON model to then pass it onto the POST request */
         const model = {
             'appFirst': firstName,
@@ -126,6 +129,7 @@ function AddEntry() {
             'total': totalPrice,
             'arssd': selectedPassportARSSD,
         };
+
         /* this is to have a variable dedicated with the parsed JSON */
         let parsedJSON = JSON.stringify(model);
         /* debugging */
@@ -139,6 +143,7 @@ function AddEntry() {
         })
             .then((response) => {
                 if (response.status === 201) {
+                    /* Reset all form values back to blank, NOT NULL */
                     setFirstName('');
                     setMiddleName('');
                     setLastName('');
@@ -148,6 +153,9 @@ function AddEntry() {
                     setSelectedPassportRecords('');
                     setSelectedPassportARSSD(0);
                     setTotalValidation('');
+                    /* afterwards reset the first form field to default back into the first name */
+                    event.target.reset();
+                    inputRef.current.focus();
                 }
                 console.log(response.data);
             })
@@ -176,6 +184,7 @@ function AddEntry() {
                                     lastName={lastName} setLastName={setLastName}
                                     dateOfBirth={dateOfBirth} setDateOfBirth={setDateOfBirth}
                                     phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber}
+                                    inputRef={inputRef}
                                 />
                                 <div className="secondColumn">
                                     <LockBoxDropdownMenu

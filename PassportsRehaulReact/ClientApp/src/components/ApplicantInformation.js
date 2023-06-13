@@ -7,7 +7,8 @@ const ApplicantInformation = ({
     middleName, setMiddleName,
     lastName, setLastName,
     dateOfBirth, setDateOfBirth,
-    phoneNumber, setPhoneNumber
+    phoneNumber, setPhoneNumber,
+    inputRef
 }) => {
 
     const handlePhoneNumberChange = (e) => {
@@ -37,6 +38,7 @@ const ApplicantInformation = ({
                 id="firstName"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
+                ref={inputRef}
             />
             <br />
             <label htmlFor="middleName">Middle Name:</label>
