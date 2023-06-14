@@ -10,13 +10,15 @@ import '../styles/SearchAndEditEntryStyles/SearchAndEditEntryStyle.css';
 
 function SearchAndEditEntry() {
 
-    /* This uses an API Endpoint to check and see within the current users windows groupings if they have the specific PassportDelete group to be authorized to make edits/ and or /delete */
+    /* This uses an API Endpoint to check and see within the current users windows groupings if they have the specific PassportDelete group and PassportEdit to be authorized to make edits/ and or /delete */
     const [isPassportDeleteGroup, setIsPassportDeleteGroup] = useState(false);
+    const [isPassportEditGroup, setIsPassportEditGroup] = useState(false);
     useEffect(() => {
         axios.get('/api/User/groups')
             .then((response) => {
                 console.log(response.data.groups.includes('CORALGABLES\\PassportDelete'));
-                setIsPassportDeleteGroup(response.data.groups.includes('CORALGABLES\\PassportDelete'));
+                setIsPassportDeleteGroup(response.data.groups.includes('CORALGABLES\\PassportDelete SEC'));
+                setIsPassportEditGroup(response.data.groups.includes('CORALGABLES\\PassportEdit SEC'));
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -85,6 +87,7 @@ function SearchAndEditEntry() {
                     onEdit={handleEditOption}
                     onDelete={handleDeleteOption}
                     isPassportDeleteGroup={isPassportDeleteGroup}
+                    isPassportEditGroup={isPassportEditGroup}
                 >
                     <h2>{checkedID}</h2>
                 </OptionsBox>

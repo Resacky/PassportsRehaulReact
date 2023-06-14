@@ -34,3 +34,16 @@
     gap: 10px; /* Space between buttons */
     margin-top: 20px; /* Add space between children and buttons */
 }
+
+.InsufficientAccess {
+    display: flex;
+    flex-wrap: wrap;
+    height: 6vh;
+    width: 8vw;
+    border: solid;
+}
+
+.option-button {
+    height: 6vh;
+    width: 8vw;
+}
