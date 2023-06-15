@@ -93,7 +93,7 @@ function AddEntry() {
             return;
         }
         /* Passport Selection box check */
-        if (selectedLockBoxRecords != 'LockBox Number 3 (DS-5504)'  && (selectedPassportRecords == null || selectedPassportRecords == '')) {
+        if (selectedLockBoxRecords != 'LockBox Number 3 (DS-5504)' && (selectedPassportRecords == null || selectedPassportRecords == '')) {
             setErrorHandling(true);
             setErrorHandlingMessage('Passport Selection box is not populated');
             return;
