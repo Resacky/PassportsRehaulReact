@@ -112,7 +112,7 @@ function AddEntry() {
         formattedDateCreated = formattedDateCreated.split('.')[0];
 
         /* for debugging, this should only be set off if all error use cases pass */
-        //console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}\nCreated By: ${currentUser}`);
+        console.log(`Name: ${firstName} ${middleName} ${lastName}\nDate of Birth: ${dateOfBirth}\nPhone Number: ${phoneNumber}\nLock Box selection: ${selectedLockBoxRecords}\nType of Passport: ${selectedPassportRecords}\nPassport Price: ${passportPrice}\nAdded Return Services Price: ${selectedPassportARSSD}\nTotal: ${totalPrice}\nCreated By: ${currentUser}`);
 
         /* this is to create the JSON model to then pass it onto the POST request */
         const model = {

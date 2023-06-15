@@ -16,8 +16,7 @@ function SearchAndEditEntry() {
     useEffect(() => {
         axios.get('/api/User/groups')
             .then((response) => {
-                /* for debugging */
-                /* console.log(response.data.groups.includes('CORALGABLES\\PassportDelete')); */
+                console.log(response.data.groups.includes('CORALGABLES\\PassportDelete'));
                 setIsPassportDeleteGroup(response.data.groups.includes('CORALGABLES\\PassportDelete SEC'));
                 setIsPassportEditGroup(response.data.groups.includes('CORALGABLES\\PassportEdit SEC'));
             })
